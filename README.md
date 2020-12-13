@@ -3,13 +3,13 @@
 **Stable repository:** *(recommended for production)*
 
 ```
-$ helm repo add link-society https://link-society.github.io/charts/stable
+$ helm repo add link-society https://charts.link-society.com/stable
 $ helm repo update
 ```
 
 **Testing repository:**
 
 ```
-$ helm repo add link-society-incubator https://link-society.github.io/charts/incubator
+$ helm repo add link-society-incubator https://charts.link-society.com/incubator
 $ helm repo update
 ```
