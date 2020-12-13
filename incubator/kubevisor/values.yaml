@@ -1,0 +1,41 @@
+container:
+  registry: npm.pkg.github.io/link-society
+
+operator:
+  enabled: yes
+
+  replicas: 3
+  image:
+    name: kubevisor/kubevisor-operator
+    tag: latest
+    pullPolicy: Always
+
+  statusImage:
+    name: lachlanevenson/k8s-kubectl
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  serviceAccountName: default
+
+  rabbitUrl:
+    value: amqp://guest:guest@localhost:5672/
+
+dashboard:
+  enabled: yes
+
+  replicas: 3
+  image:
+    name: kubevisor/kubevisor-dashboard
+    tag: latest
+    pullPolicy: Always
+
+ingress:
+  enabled: yes
+
+  host: status.link-society.com
+
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+
+nameOverride: ""
+fullnameOverride: ""

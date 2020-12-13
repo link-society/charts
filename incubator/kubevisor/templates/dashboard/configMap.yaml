@@ -1,0 +1,18 @@
+{{- if .Values.dashboard.enabled -}}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "kubevisor.fullname" . }}-dashboard
+  namespace: {{ .Release.Namespace }}
+  labels:
+    helm.sh/chart: {{ template "kubevisor.chart" . }}
+    app.kubernetes.io/name: {{ template "kubevisor.name" . }}-dashboard
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/part-of: kubevisor
+data:
+  KUBEVISOR_TOKEN_NAME: kubevisor-token
+  KUBEVISOR_GRAPHQL_ENDPOINT_HTTP: http://{{ include "kubevisor.fullname" . }}-operator/graphql
+  KUBEVISOR_GRAPHQL_ENDPOINT_WS: ws://{{ include "kubevisor.fullname" . }}-operator/graphql
+{{- end -}}

@@ -1,0 +1,6 @@
+---
+apiVersion: v1
+appVersion: "1.0.0"
+description: Kubevisor Helm chart
+name: kubevisor
+version: 1.0.0

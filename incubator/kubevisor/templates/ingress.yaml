@@ -1,0 +1,46 @@
+{{- if .Values.ingress.enabled -}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "kubevisor.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    helm.sh/chart: {{ template "kubevisor.chart" . }}
+    app.kubernetes.io/name: {{ template "kubevisor.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/part-of: kubevisor
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+{{- range $annotation, $value := .Values.ingress.annotations -}}
+    {{ $annotation }}: {{ $value }}
+{{- end -}}
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: {{ include "kubevisor.fullname" . }}-tls
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+{{- if .Values.operator.enabled -}}
+          - path: /operator
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "kubevisor.fullname" . }}-operator
+                port:
+                  number: 80
+{{- end -}}
+{{- if .Values.dashboard.enabled -}}
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "kubevisor.fullname" . }}-dashboard
+                port:
+                  number: 80
+{{- end -}}
+{{- end -}}

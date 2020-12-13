@@ -1,0 +1,18 @@
+{{- if .Values.operator.enabled -}}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "kubevisor.fullname" . }}-operator
+  namespace: {{ .Release.Namespace }}
+  labels:
+    helm.sh/chart: {{ template "kubevisor.chart" . }}
+    app.kubernetes.io/name: {{ template "kubevisor.name" . }}-operator
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/part-of: kubevisor
+data:
+  KUBEVISOR_STATUS_IMAGE_NAME: "{{ .Values.operator.statusImage.name }}:{{ .Values.operator.statusImage.tag }}"
+  KUBEVISOR_STATUS_IMAGE_PULL_POLICY: {{ .Values.operator.statusImage.pullPolicy }}
+  KUBEVISOR_SERVICEACCOUNT: {{ .Values.operator.serviceAccountName }}
+{{- end -}}
