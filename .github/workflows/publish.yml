@@ -1,0 +1,49 @@
+name: Publish packages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout-charts@scm
+        uses: actions/checkout@v2
+        with:
+          path: charts
+      - name: checkout-index@scm
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: public
+      - name: helm@tools
+        uses: Azure/setup-helm@v1
+      - name: incubator@packaging
+        run: |
+          for chart in charts/incubator/*/
+          do
+            if [ -d $chart ]
+            then
+              helm package $chart -d public/incubator || exit 1
+            fi
+          done
+          helm repo index public/incubator --url https://charts.link-society.com/incubator || exit 1
+      - name: stable@packaging
+        run: |
+          for chart in charts/stable/*/
+          do
+            if [ -d $chart ]
+            then
+              helm package $chart -d public/stable || exit 1
+            fi
+          done
+          helm repo index public/stable --url https://charts.link-society.com/stable || exit 1
+      - name: publish@scm
+        run: |
+          cd public
+          git add .
+          git commit -m ":construction_worker: re-index chart repositories"
+          git push origin gh-pages
