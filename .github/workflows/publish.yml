@@ -44,6 +44,8 @@ jobs:
       - name: publish@scm
         run: |
           cd public
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add .
           git commit -m ":construction_worker: re-index chart repositories"
           git push origin gh-pages
