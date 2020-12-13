@@ -3,11 +3,11 @@ entries:
   kubevisor:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-12-13T17:39:45.6850066+01:00"
+    created: "2020-12-13T17:19:52.558919283Z"
     description: Kubevisor Helm chart
-    digest: 345e11ff56c9a9ac7791223d460fc4003dabc1fe19a1b442f41a0fdcd51af409
+    digest: f9de9db1b6e6e89a8f50209bc54c38e9db029bc8f2ff8b36cb886bbb42f5c418
     name: kubevisor
     urls:
-    - https://link-society.github.io/charts/incubator/kubevisor-1.0.0.tgz
+    - https://charts.link-society.com/incubator/kubevisor-1.0.0.tgz
     version: 1.0.0
-generated: "2020-12-13T17:39:45.6840059+01:00"
+generated: "2020-12-13T17:19:52.558360777Z"
