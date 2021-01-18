@@ -3,11 +3,22 @@ entries:
   kubevisor:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-12-13T17:19:52.558919283Z"
+    created: "2021-01-18T10:27:42.796246389Z"
     description: Kubevisor Helm chart
-    digest: f9de9db1b6e6e89a8f50209bc54c38e9db029bc8f2ff8b36cb886bbb42f5c418
+    digest: d5fdd9a865ee1b04e3afcefa7caa09308a5f8868fb05252df47c24ba56a19916
     name: kubevisor
     urls:
     - https://charts.link-society.com/incubator/kubevisor-1.0.0.tgz
     version: 1.0.0
-generated: "2020-12-13T17:19:52.558360777Z"
+  rabbitmq-cluster-operator:
+  - apiVersion: v2
+    appVersion: 1.4.0
+    created: "2021-01-18T10:27:42.797144589Z"
+    description: RabbitMQ Cluster Operator
+    digest: e16f235b0dfe71c5fbbefb765c8ce8d6bee0ae2e2eeff78b4be52ad39adce28c
+    name: rabbitmq-cluster-operator
+    type: application
+    urls:
+    - https://charts.link-society.com/incubator/rabbitmq-cluster-operator-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-01-18T10:27:42.795715189Z"
