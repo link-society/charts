@@ -1,0 +1,17 @@
+---
+apiVersion: kubevisor.io/v1
+kind: Unit
+metadata:
+  name: {{ include "kubevisor-curl-unit.fullname" . }}
+  labels:
+    {{- include "kubevisor-curl-unit.labels" . | nindent 4 }}
+    {{ .Values.labels | toYaml | nindent 4 }}
+spec:
+  schedule: {{ .Values.schedule }}
+  image:
+    name: {{ .Values.image.name }}
+    pullPolicy: {{ .Values.image.pullPolicy }}
+    command: "curl -L {{ .Values.args }} $HOST"
+  env:
+    - name: HOST
+      {{ .Values.host | toYaml | nindent 14 }}

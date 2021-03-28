@@ -1,0 +1,18 @@
+---
+
+# User Configuration
+
+schedule: every 5 minutes
+
+host:
+  value: http://example.com
+
+labels: {}
+
+# Internal Configuration (can be overidden)
+
+image:
+  name: curlimages/curl:latest
+  pullPolicy: IfNotPresent
+
+args: '-v'
