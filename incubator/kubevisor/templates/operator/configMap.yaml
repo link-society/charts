@@ -14,5 +14,7 @@ metadata:
 data:
   KUBEVISOR_STATUS_IMAGE_NAME: "{{ .Values.operator.statusImage.name }}:{{ .Values.operator.statusImage.tag }}"
   KUBEVISOR_STATUS_IMAGE_PULL_POLICY: {{ .Values.operator.statusImage.pullPolicy }}
+  KUBEVISOR_REDIS_IMAGE: "{{ .Values.operator.redis.image.name }}:{{ .Values.operator.redis.image.tag }}"
+  KUBEVISOR_REDIS_IMAGE_PULL_POLICY: {{ .Values.operator.redis.image.pullPolicy }}
   KUBEVISOR_SERVICEACCOUNT: {{ .Values.operator.serviceAccountName }}
 {{- end -}}
