@@ -58,6 +58,8 @@ spec:
           env:
             - name: RABBITMQ_URL
               {{ .Values.operator.rabbitUrl | toYaml | nindent 14 }}
+            - name: KUBEVISOR_REDIS_HOST
+              {{ .Values.operator.redis.host | toYaml | nindent 14 }}
           envFrom:
             - configMapRef:
                 name: {{ include "kubevisor.fullname" . }}-operator

@@ -15,6 +15,15 @@ operator:
     tag: latest
     pullPolicy: IfNotPresent
 
+  redis:
+    host:
+      value: http://localhost:6739
+
+    image:
+      name: redis
+      tag: alpine
+      pullPolicy: IfNotPresent
+
   serviceAccountName: default
 
   rabbitUrl:
