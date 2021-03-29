@@ -5,7 +5,9 @@ metadata:
   name: {{ include "kubevisor-curl-unit.fullname" . }}
   labels:
     {{- include "kubevisor-curl-unit.labels" . | nindent 4 }}
+    {{ if .Values.labels }}
     {{ .Values.labels | toYaml | nindent 4 }}
+    {{ end}}
 spec:
   schedule: {{ .Values.schedule }}
   image:
@@ -14,4 +16,4 @@ spec:
     command: "curl -L {{ .Values.args }} $HOST"
   env:
     - name: HOST
-      {{ .Values.host | toYaml | nindent 14 }}
+      {{ .Values.host | toYaml | nindent 6 }}
