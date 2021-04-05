@@ -13,6 +13,6 @@ metadata:
     app.kubernetes.io/part-of: kubevisor
 data:
   KUBEVISOR_TOKEN_NAME: kubevisor-token
-  KUBEVISOR_GRAPHQL_ENDPOINT_HTTP: http://{{ include "kubevisor.fullname" . }}-operator/graphql
-  KUBEVISOR_GRAPHQL_ENDPOINT_WS: ws://{{ include "kubevisor.fullname" . }}-operator/graphql
+  KUBEVISOR_GRAPHQL_ENDPOINT_HTTP: {{ .Values.dashboard.graphqlEndpoint.http }}
+  KUBEVISOR_GRAPHQL_ENDPOINT_WS: {{ .Values.dashboard.graphqlEndpoint.ws }}
 {{- end -}}
