@@ -27,7 +27,7 @@ spec:
       terminationGracePeriodSeconds: 10
       initContainers:
         - name: init-node-runtime
-          image: "{{ .Values.operator.image.name }}:{{ .Values.operator.image.tag }}"
+          image: "{{ .Values.container.registry }}/{{ .Values.operator.image.name }}:{{ .Values.operator.image.tag }}"
           imagePullPolicy: {{ .Values.operator.image.pullPolicy }}
           volumeMounts:
             - name: node-runtime

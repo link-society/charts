@@ -1,5 +1,5 @@
 container:
-  registry: docker.pkg.github.io/link-society
+  registry: docker.pkg.github.com/link-society
 
 operator:
   enabled: yes
