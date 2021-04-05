@@ -34,7 +34,7 @@ dashboard:
 
   replicas: 3
   image:
-    name: kubevisor/kubevisor-dashboard
+    name: kubevisor-dashboard/kubevisor-dashboard
     tag: latest
     pullPolicy: Always
 
