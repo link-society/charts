@@ -1,34 +1,34 @@
-{{- if .Values.operator.enabled -}}
+{{- if .Values.controller.enabled -}}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "kubevisor.fullname" . }}-operator
+  name: {{ include "kubevisor.fullname" . }}-controller
   namespace: {{ .Release.Namespace }}
   labels:
     helm.sh/chart: {{ template "kubevisor.chart" . }}
-    app.kubernetes.io/name: {{ template "kubevisor.name" . }}-operator
+    app.kubernetes.io/name: {{ template "kubevisor.name" . }}-controller
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/part-of: kubevisor
 spec:
-  serviceName: {{ include "kubevisor.fullname" . }}-operator
+  serviceName: {{ include "kubevisor.fullname" . }}-controller
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "kubevisor.name" . }}-operator
+      app.kubernetes.io/name: {{ include "kubevisor.name" . }}-controller
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "kubevisor.name" . }}-operator
+        app.kubernetes.io/name: {{ include "kubevisor.name" . }}-controller
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       terminationGracePeriodSeconds: 10
       initContainers:
         - name: init-node-runtime
-          image: "{{ .Values.container.registry }}/{{ .Values.operator.image.name }}:{{ .Values.operator.image.tag }}"
-          imagePullPolicy: {{ .Values.operator.image.pullPolicy }}
+          image: "{{ .Values.container.registry }}/{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
+          imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
           volumeMounts:
             - name: node-runtime
               mountPath: /opt/kubevisor
@@ -47,8 +47,8 @@ spec:
               fi
       containers:
         - name: node
-          image: "{{ .Values.container.registry }}/{{ .Values.operator.image.name }}:{{ .Values.operator.image.tag }}"
-          imagePullPolicy: {{ .Values.operator.image.pullPolicy }}
+          image: "{{ .Values.container.registry }}/{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
+          imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
           volumeMounts:
             - name: node-runtime
               mountPath: /opt/kubevisor
@@ -58,12 +58,12 @@ spec:
             - source /opt/kubevisor/env && yarn start
           env:
             - name: RABBITMQ_URL
-              {{ .Values.operator.rabbitUrl | toYaml | nindent 14 }}
+              {{ .Values.controller.rabbitUrl | toYaml | nindent 14 }}
             - name: KUBEVISOR_REDIS_HOST
-              {{ .Values.operator.redis.host | toYaml | nindent 14 }}
+              {{ .Values.controller.redis.host | toYaml | nindent 14 }}
           envFrom:
             - configMapRef:
-                name: {{ include "kubevisor.fullname" . }}-operator
+                name: {{ include "kubevisor.fullname" . }}-controller
           ports:
             - name: http
               containerPort: 8000

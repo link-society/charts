@@ -1,13 +1,13 @@
-{{- if .Values.operator.enabled -}}
+{{- if .Values.controller.enabled -}}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "kubevisor.fullname" . }}-operator
+  name: {{ include "kubevisor.fullname" . }}-controller
   namespace: {{ .Release.Namespace }}
   labels:
     helm.sh/chart: {{ include "kubevisor.chart" . }}
-    app.kubernetes.io/name: {{ include "kubevisor.name" . }}-operator
+    app.kubernetes.io/name: {{ include "kubevisor.name" . }}-controller
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/part-of: kubevisor
@@ -19,6 +19,6 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "kubevisor.name" . }}-operator
+    app.kubernetes.io/name: {{ include "kubevisor.name" . }}-controller
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
