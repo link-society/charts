@@ -47,7 +47,7 @@ spec:
               fi
       containers:
         - name: node
-          image: "{{ .Values.operator.image.name }}:{{ .Values.operator.image.tag }}"
+          image: "{{ .Values.container.registry }}/{{ .Values.operator.image.name }}:{{ .Values.operator.image.tag }}"
           imagePullPolicy: {{ .Values.operator.image.pullPolicy }}
           volumeMounts:
             - name: node-runtime
