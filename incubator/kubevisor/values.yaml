@@ -38,6 +38,10 @@ dashboard:
     tag: latest
     pullPolicy: Always
 
+  graphqlEndpoint:
+    http: https://status.link-society.com/controller/graphql
+    ws: wss://status.link-society.com/controller/graphql
+
 ingress:
   enabled: yes
 
