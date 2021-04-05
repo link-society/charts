@@ -1,12 +1,12 @@
 container:
-  registry: docker.pkg.github.com/link-society
+  registry: ghcr.io
 
 controller:
   enabled: yes
 
   replicas: 3
   image:
-    name: kubevisor/kubevisor-controller
+    name: link-society/kubevisor-controller
     tag: latest
     pullPolicy: Always
 
@@ -34,7 +34,7 @@ dashboard:
 
   replicas: 3
   image:
-    name: kubevisor-dashboard/kubevisor-dashboard
+    name: link-society/kubevisor-dashboard
     tag: latest
     pullPolicy: Always
 
