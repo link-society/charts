@@ -13,9 +13,9 @@ metadata:
     app.kubernetes.io/part-of: kubevisor
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-{{- range $annotation, $value := .Values.ingress.annotations -}}
-    {{ $annotation }}: {{ $value }}
-{{- end -}}
+    {{ if .Values.ingress.annotations }}
+    {{ .Values.ingress.annotations | toYaml | nindent 4 }}
+    {{ end}}
 spec:
   tls:
     - hosts:
