@@ -39,7 +39,7 @@ spec:
               set -ex
               [[ `hostname` =~ -([0-9]+)$ ]] || exit 1
               ordinal=${BASH_REMATCH[1]}
-              echo "export KUBEVISOR_NAMESPACE=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)" > /opt/kubervisor/env
+              echo "export KUBEVISOR_NAMESPACE=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)" > /opt/kubevisor/env
               if [[ $ordinal -eq 0 ]]; then
                 echo "export KUBEVISOR_NODE_KIND=primary" >> /opt/kubevisor/env
               else
