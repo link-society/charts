@@ -3,9 +3,9 @@ entries:
   kubevisor:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-04-05T18:49:42.496181347Z"
+    created: "2021-04-05T19:01:05.499400759Z"
     description: Kubevisor Helm chart
-    digest: 1744645d886d5f0d85b4e613857f04bbdafe42d7b0f55411d00c2a771fef8160
+    digest: cda4130c06ebef2e83901c56560edfec1826fd8d938b9906780eab78d7ef117b
     name: kubevisor
     urls:
     - https://charts.link-society.com/incubator/kubevisor-1.0.0.tgz
@@ -13,9 +13,9 @@ entries:
   kubevisor-curl-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-04-05T18:49:42.49645725Z"
+    created: "2021-04-05T19:01:05.499671258Z"
     description: Parametrable cURL Unit for Kubevisor
-    digest: 14c6e7bcecdcdade3cefaed383f3471a4731ef46343371541c13aa2b1b818ab8
+    digest: b203d0e6c90a8912102d78303fa299f0d8cdfd7f6932fa20a16f92fd9a91346b
     name: kubevisor-curl-unit
     type: application
     urls:
@@ -24,7 +24,7 @@ entries:
   kubevisor-sql-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-04-05T18:49:42.496859756Z"
+    created: "2021-04-05T19:01:05.500011556Z"
     description: A Helm chart for Kubernetes
     digest: 6837b602b5b89d2facf5ac0291e111a552c33f130b1a05a5a550b655e52260be
     name: kubevisor-sql-unit
@@ -35,12 +35,12 @@ entries:
   rabbitmq-cluster-operator:
   - apiVersion: v2
     appVersion: 1.4.0
-    created: "2021-04-05T18:49:42.497890069Z"
+    created: "2021-04-05T19:01:05.501127851Z"
     description: RabbitMQ Cluster Operator
-    digest: 6581c367215671cb6e7ac39e2b750875c8cbe592233a3c465f9d3b159d9d3827
+    digest: 788e186de04a5d8d92b3d7f89a8cbc14864ca8470886b73884eaec14d0b12122
     name: rabbitmq-cluster-operator
     type: application
     urls:
     - https://charts.link-society.com/incubator/rabbitmq-cluster-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2021-04-05T18:49:42.495425237Z"
+generated: "2021-04-05T19:01:05.498829262Z"
