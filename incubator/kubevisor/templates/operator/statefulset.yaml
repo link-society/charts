@@ -12,6 +12,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/part-of: kubevisor
 spec:
+  serviceName: {{ include "kubevisor.fullname" . }}-operator
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
