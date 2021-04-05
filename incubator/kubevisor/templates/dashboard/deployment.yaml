@@ -32,6 +32,6 @@ spec:
               containerPort: 80
               protocol: TCP
           envFrom:
-            configMap:
-              name: {{ include "kubevisor.fullname" . }}-dashboard
+            - configMapRef:
+                name: {{ include "kubevisor.fullname" . }}-dashboard
 {{- end -}}
