@@ -1,12 +1,12 @@
 container:
   registry: docker.pkg.github.com/link-society
 
-operator:
+controller:
   enabled: yes
 
   replicas: 3
   image:
-    name: kubevisor/kubevisor-operator
+    name: kubevisor/kubevisor-controller
     tag: latest
     pullPolicy: Always
 
