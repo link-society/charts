@@ -12,7 +12,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/part-of: kubevisor
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
     {{ if .Values.ingress.annotations }}
     {{ .Values.ingress.annotations | toYaml | nindent 4 }}
     {{ end}}
@@ -26,7 +26,7 @@ spec:
       http:
         paths:
 {{ if .Values.controller.enabled }}
-          - path: /controller
+          - path: /controller/(.*)
             pathType: Prefix
             backend:
               service:
