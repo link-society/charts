@@ -12,7 +12,12 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/part-of: kubevisor
   annotations:
+    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($request_uri ~ "^/controller/(.*)$") {
+        add_header Cache-Control "no-cache,no-store";
+      }
     {{ if .Values.ingress.annotations }}
     {{ .Values.ingress.annotations | toYaml | nindent 4 }}
     {{ end}}
