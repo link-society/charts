@@ -1,16 +1,16 @@
-{{- if .Values.dashboard.enabled -}}
+{{- if .Values.controller.enabled -}}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "kubevisor.fullname" . }}-dashboard
+  name: {{ include "kubirds.fullname" . }}-controller
   namespace: {{ .Release.Namespace }}
   labels:
-    helm.sh/chart: {{ include "kubevisor.chart" . }}
-    app.kubernetes.io/name: {{ include "kubevisor.name" . }}-dashboard
+    helm.sh/chart: {{ include "kubirds.chart" . }}
+    app.kubernetes.io/name: {{ include "kubirds.name" . }}-controller
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-    app.kubernetes.io/part-of: kubevisor
+    app.kubernetes.io/part-of: kubirds
 spec:
   type: ClusterIP
   ports:
@@ -19,6 +19,6 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "kubevisor.name" . }}-dashboard
+    app.kubernetes.io/name: {{ include "kubirds.name" . }}-controller
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}

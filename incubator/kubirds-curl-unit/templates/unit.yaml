@@ -1,10 +1,10 @@
 ---
-apiVersion: kubevisor.io/v1
+apiVersion: kubirds.com/v1
 kind: Unit
 metadata:
-  name: {{ include "kubevisor-curl-unit.fullname" . }}
+  name: {{ include "kubirds-curl-unit.fullname" . }}
   labels:
-    {{- include "kubevisor-curl-unit.labels" . | nindent 4 }}
+    {{- include "kubirds-curl-unit.labels" . | nindent 4 }}
     {{ if .Values.labels }}
     {{ .Values.labels | toYaml | nindent 4 }}
     {{ end}}
