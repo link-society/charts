@@ -3,24 +3,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "kubevisor.fullname" . }}-dashboard
+  name: {{ include "kubirds.fullname" . }}-dashboard
   namespace: {{ .Release.Namespace }}
   labels:
-    helm.sh/chart: {{ template "kubevisor.chart" . }}
-    app.kubernetes.io/name: {{ template "kubevisor.name" . }}-dashboard
+    helm.sh/chart: {{ template "kubirds.chart" . }}
+    app.kubernetes.io/name: {{ template "kubirds.name" . }}-dashboard
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-    app.kubernetes.io/part-of: kubevisor
+    app.kubernetes.io/part-of: kubirds
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "kubevisor.name" . }}-dashboard
+      app.kubernetes.io/name: {{ include "kubirds.name" . }}-dashboard
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "kubevisor.name" . }}-dashboard
+        app.kubernetes.io/name: {{ include "kubirds.name" . }}-dashboard
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
@@ -33,5 +33,5 @@ spec:
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: {{ include "kubevisor.fullname" . }}-dashboard
+                name: {{ include "kubirds.fullname" . }}-dashboard
 {{- end -}}

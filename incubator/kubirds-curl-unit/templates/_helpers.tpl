@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "kubevisor-curl-unit.name" -}}
+{{- define "kubirds-curl-unit.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "kubevisor-curl-unit.fullname" -}}
+{{- define "kubirds-curl-unit.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "kubevisor-curl-unit.chart" -}}
+{{- define "kubirds-curl-unit.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "kubevisor-curl-unit.labels" -}}
-helm.sh/chart: {{ include "kubevisor-curl-unit.chart" . }}
-{{ include "kubevisor-curl-unit.selectorLabels" . }}
+{{- define "kubirds-curl-unit.labels" -}}
+helm.sh/chart: {{ include "kubirds-curl-unit.chart" . }}
+{{ include "kubirds-curl-unit.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "kubevisor-curl-unit.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "kubevisor-curl-unit.name" . }}
+{{- define "kubirds-curl-unit.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "kubirds-curl-unit.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "kubevisor-curl-unit.serviceAccountName" -}}
+{{- define "kubirds-curl-unit.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "kubevisor-curl-unit.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "kubirds-curl-unit.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
