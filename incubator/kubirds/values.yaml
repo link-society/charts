@@ -17,7 +17,14 @@ controller:
 
   redis:
     host:
-      value: http://localhost:6739
+      kind: static
+      static:
+        value: http://localhost:6739
+      dynamic:
+        valueFrom:
+          secretKeyRef:
+            name: kubirds-redis-access
+            key: REDIS_HOST
 
     image:
       name: redis
@@ -27,7 +34,14 @@ controller:
   serviceAccountName: default
 
   rabbitUrl:
-    value: amqp://guest:guest@localhost:5672/
+    kind: static
+    static:
+      value: amqp://guest:guest@localhost:5672/
+    dynamic:
+      valueFrom:
+        secretKeyRef:
+          name: kubirds-rabbitmq-access
+          key: RABBITMQ_URL
 
 dashboard:
   enabled: yes

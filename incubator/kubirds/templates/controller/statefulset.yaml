@@ -58,9 +58,17 @@ spec:
             - source /opt/kubirds/env && yarn start
           env:
             - name: RABBITMQ_URL
-              {{ .Values.controller.rabbitUrl | toYaml | nindent 14 }}
+            {{ if eq "static" .Values.controller.rabbitUrl.kind }}
+              {{ .Values.controller.rabbitUrl.static | toYaml | nindent 14 }}
+            {{ else }}
+              {{ .Values.controller.rabbitUrl.dynamic | toYaml | nindent 14 }}
+            {{ end }}
             - name: KUBIRDS_REDIS_HOST
-              {{ .Values.controller.redis.host | toYaml | nindent 14 }}
+            {{ if eq "static" .Values.controller.redis.host.kind }}
+              {{ .Values.controller.redis.host.static | toYaml | nindent 14 }}
+            {{ else }}
+              {{ .Values.controller.redis.host.dynamic | toYaml | nindent 14 }}
+            {{ end }}
           envFrom:
             - configMapRef:
                 name: {{ include "kubirds.fullname" . }}-controller
