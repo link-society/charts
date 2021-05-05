@@ -1,3 +1,65 @@
 apiVersion: v1
-entries: {}
-generated: "2021-05-04T20:11:41.051112673Z"
+entries:
+  istio-base:
+  - apiVersion: v1
+    created: "2021-05-05T18:31:19.820790561Z"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: eec012a24c76b963308ec99545e54e1568c279e130018811a0ddfdc2afc435a0
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: istio-base
+    sources:
+    - http://github.com/istio/istio
+    urls:
+    - https://charts.link-society.com/stable/istio-base-1.9.4.tgz
+    version: 1.9.4
+  istio-discovery:
+  - apiVersion: v1
+    created: "2021-05-05T18:31:19.823173487Z"
+    description: Helm chart for istio control plane
+    digest: 24f667b327503a582d964994c4ab733c6e07d8f7fce73af955d1914ac6f65dff
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istio-discovery
+    sources:
+    - http://github.com/istio/istio
+    urls:
+    - https://charts.link-society.com/stable/istio-discovery-1.9.4.tgz
+    version: 1.9.4
+  istio-egress:
+  - apiVersion: v1
+    created: "2021-05-05T18:31:19.824469556Z"
+    description: Helm chart for deploying Istio gateways
+    digest: b3d0ac1cd021979c37f45802e35ca6882dcb9d681f70f848f80d0dde85c605d0
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - egressgateway
+    - gateways
+    name: istio-egress
+    sources:
+    - http://github.com/istio/istio
+    urls:
+    - https://charts.link-society.com/stable/istio-egress-1.9.4.tgz
+    version: 1.9.4
+  istio-ingress:
+  - apiVersion: v1
+    created: "2021-05-05T18:31:19.826312353Z"
+    description: Helm chart for deploying Istio gateways
+    digest: 79b7f7c82104ba4f1fc7ee8a13c4a85ace4012ce43a4581dab88890bda945725
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - ingressgateway
+    - gateways
+    name: istio-ingress
+    sources:
+    - http://github.com/istio/istio
+    urls:
+    - https://charts.link-society.com/stable/istio-ingress-1.9.4.tgz
+    version: 1.9.4
+generated: "2021-05-05T18:31:19.818920663Z"

@@ -3,7 +3,7 @@ entries:
   kubevisor:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-05-04T20:11:40.987102422Z"
+    created: "2021-05-05T18:31:19.548091452Z"
     description: Kubevisor Helm chart
     digest: 4d30a93ca13b3443898549c87dbc2722b1e861f6ff2fac5aac283482586adecf
     name: kubevisor
@@ -13,7 +13,7 @@ entries:
   kubevisor-curl-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-05-04T20:11:40.98736341Z"
+    created: "2021-05-05T18:31:19.548417069Z"
     description: Parametrable cURL Unit for Kubevisor
     digest: cd09d80e713c6cdbf3cc8f05c6f23f1553267bc41939da9e8069205d91295d55
     name: kubevisor-curl-unit
@@ -24,7 +24,7 @@ entries:
   kubevisor-sql-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-05-04T20:11:40.987708926Z"
+    created: "2021-05-05T18:31:19.548838791Z"
     description: A Helm chart for Kubernetes
     digest: 6837b602b5b89d2facf5ac0291e111a552c33f130b1a05a5a550b655e52260be
     name: kubevisor-sql-unit
@@ -35,9 +35,9 @@ entries:
   kubirds:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-05-04T20:11:40.988258512Z"
+    created: "2021-05-05T18:31:19.549363719Z"
     description: Kubirds Helm chart
-    digest: 4cb6865017c90613b4553482389c2b0230912bd2c36c269b8470c37bfdd6cbdb
+    digest: 9552b87bcc8cb45566f1a390e5c13185774a44bde10cfadd859b035f82f9943e
     name: kubirds
     urls:
     - https://charts.link-society.com/incubator/kubirds-1.0.0.tgz
@@ -45,9 +45,9 @@ entries:
   kubirds-curl-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-05-04T20:11:40.988504394Z"
+    created: "2021-05-05T18:31:19.549645434Z"
     description: Parametrable cURL Unit for Kubirds
-    digest: 0b04b40cbee9cc657d75f4b8dd766b40ee80d9eaa6556cff2274e703db566a90
+    digest: 044f79a9e994f4af4cde5cc4940b19e6f20dd4814f62b60e00ddb448ab458631
     name: kubirds-curl-unit
     type: application
     urls:
@@ -56,12 +56,12 @@ entries:
   rabbitmq-cluster-operator:
   - apiVersion: v2
     appVersion: 1.4.0
-    created: "2021-05-04T20:11:40.990614305Z"
+    created: "2021-05-05T18:31:19.552451982Z"
     description: RabbitMQ Cluster Operator
-    digest: 76db836d67ff0b4d905c83e72393b054a20d53565b24722afca754d5d5cd185e
+    digest: 8abd8b621c667a0c0400b9142c23225bb389ec5d85fbd9d658baf28561eb3542
     name: rabbitmq-cluster-operator
     type: application
     urls:
     - https://charts.link-society.com/incubator/rabbitmq-cluster-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2021-05-04T20:11:40.986316458Z"
+generated: "2021-05-05T18:31:19.547382314Z"
