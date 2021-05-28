@@ -1,0 +1,17 @@
+---
+
+# User Configuration
+
+schedule: every 5 minutes
+
+git_url: null
+git_ref: main
+git_dir: '.'
+
+labels: {}
+
+# Internal Configuration (can be overidden)
+
+image:
+  name: ghcr.io/datapio/klifter:latest
+  pullPolicy: IfNotPresent
