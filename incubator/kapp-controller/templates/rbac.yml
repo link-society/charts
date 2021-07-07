@@ -1,0 +1,148 @@
+{{ if .Values.rbac.create }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Namespace }}-cluster-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - serviceaccounts
+  verbs:
+  - get
+- apiGroups:
+  - kappctrl.k14s.io
+  resources:
+  - apps
+  - apps/status
+  verbs:
+  - '*'
+- apiGroups:
+  - packaging.carvel.dev
+  resources:
+  - packageinstalls
+  - packageinstalls/status
+  verbs:
+  - '*'
+- apiGroups:
+  - packaging.carvel.dev
+  resources:
+  - packagerepositories
+  - packagerepositories/status
+  verbs:
+  - '*'
+- apiGroups:
+  - internal.packaging.carvel.dev
+  resources:
+  - internalpackagemetadatas
+  verbs:
+  - '*'
+- apiGroups:
+  - data.packaging.carvel.dev
+  resources:
+  - packagemetadatas
+  - packagemetadatas/status
+  verbs:
+  - '*'
+- apiGroups:
+  - internal.packaging.carvel.dev
+  resources:
+  - internalpackages
+  verbs:
+  - '*'
+- apiGroups:
+  - data.packaging.carvel.dev
+  resources:
+  - packages
+  - packages/status
+  verbs:
+  - '*'
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - '*'
+- apiGroups:
+  - apiregistration.k8s.io
+  resources:
+  - apiservices
+  verbs:
+  - update
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - list
+  - watch
+  - get
+  - update
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - mutatingwebhookconfigurations
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - validatingwebhookconfigurations
+  verbs:
+  - list
+  - watch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ .Release.Namespace }}-cluster-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Release.Namespace }}-cluster-role
+subjects:
+- kind: ServiceAccount
+  name: {{ include "kapp-controller.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: pkg-apiserver:system:auth-delegator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: {{ include "kapp-controller.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pkgserver-auth-reader
+  namespace: kube-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: extension-apiserver-authentication-reader
+subjects:
+- kind: ServiceAccount
+  name: {{ include "kapp-controller.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+
+{{ end }}

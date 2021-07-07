@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "kapp-controller.fullname" . }}-packaging-api
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "kapp-controller.labels" . | nindent 4 }}
+spec:
+  ports:
+  - port: 443
+    protocol: TCP
+    targetPort: api
+  selector:
+    {{- include "kapp-controller.selectorLabels" . | nindent 4 }}

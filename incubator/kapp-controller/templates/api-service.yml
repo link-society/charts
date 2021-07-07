@@ -1,0 +1,15 @@
+---
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1alpha1.data.packaging.carvel.dev
+  labels:
+    {{- include "kapp-controller.labels" . | nindent 4 }}
+spec:
+  group: data.packaging.carvel.dev
+  groupPriorityMinimum: 100
+  service:
+    name: {{ include "kapp-controller.fullname" . }}-packaging-api
+    namespace: {{ .Release.Namespace }}
+  version: v1alpha1
+  versionPriority: 100

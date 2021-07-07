@@ -1,0 +1,55 @@
+---
+replicaCount: 1
+revisionHistoryLimit: 0
+
+metadata:
+  images:
+    remote: git@github.com:vmware-tanzu/carvel-kapp-controller.git
+    revision: 0356add4b65c3744764626f139f7308c59bcf8d3
+
+image:
+  repository: index.docker.io/k14s/kapp-controller@sha256
+  tag: c8c19ef5035f1da43d97250d2bf24e068a0e4485ee157ab9867ef267e8247f26
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: yes
+  annotations: {}
+  name: ""
+
+rbac:
+  create: yes
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 3000
+
+securityContext:
+  runAsGroup: 2000
+  runAsUser: 1000
+
+resources:
+  requests:
+    cpu: 120m
+    memory: 100Mi
+
+autoscaling:
+  enabled: no
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+kapp-controller-crds:
+  createCRDs: yes

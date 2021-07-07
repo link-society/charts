@@ -1,0 +1,8 @@
+apiVersion: v2
+name: kapp-controller-crds
+description: CRDs for kapp-controller
+
+type: application
+version: 0.1.0
+
+appVersion: "0.20.0"
