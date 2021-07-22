@@ -13,6 +13,8 @@ image:
 
 controller:
   port: 10350
+  createNamespace: yes
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
