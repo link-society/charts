@@ -47,5 +47,3 @@ tolerations: []
 
 affinity: {}
 
-kapp-controller-crds:
-  createCRDs: yes
