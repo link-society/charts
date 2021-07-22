@@ -4,11 +4,11 @@ revisionHistoryLimit: 0
 metadata:
   images:
     remote: git@github.com:vmware-tanzu/carvel-kapp-controller.git
-    revision: 0356add4b65c3744764626f139f7308c59bcf8d3
+    revision: 84fbfc9e426bfc9b4200319c38de29b0b7f82598
 
 image:
   repository: index.docker.io/k14s/kapp-controller@sha256
-  tag: c8c19ef5035f1da43d97250d2bf24e068a0e4485ee157ab9867ef267e8247f26
+  tag: 3e5e6e47c1011baccb66838904e816b0e1ce697327281b5e2d88307244af193a
   pullPolicy: IfNotPresent
 
 controller:
