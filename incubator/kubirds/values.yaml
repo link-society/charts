@@ -6,6 +6,7 @@ controller:
     name: linksociety/kubirds-controller
     tag: '1.0.0-rc3'
     pullPolicy: Always
+    pullSecrets: []
 
   statusImage:
     name: lachlanevenson/k8s-kubectl
@@ -48,6 +49,7 @@ dashboard:
     name: ghcr.io/link-society/kubirds-dashboard
     tag: '1.0.0-rc3'
     pullPolicy: Always
+    pullSecrets: []
 
   graphqlEndpoint:
     http: https://status.link-society.com/controller/graphql
