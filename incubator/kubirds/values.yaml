@@ -41,7 +41,7 @@ controller:
           key: RABBITMQ_URL
 
 dashboard:
-  enabled: yes
+  enabled: no
 
   replicas: 3
   image:
@@ -54,7 +54,7 @@ dashboard:
     ws: wss://status.link-society.com/controller/graphql
 
 ingress:
-  enabled: yes
+  enabled: no
 
   host: status.link-society.com
 
