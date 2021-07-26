@@ -27,7 +27,7 @@ spec:
       terminationGracePeriodSeconds: 10
       initContainers:
         - name: init-node-runtime
-          image: "{{ .Values.container.registry }}/{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
+          image: "{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
           imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
           volumeMounts:
             - name: node-runtime
@@ -47,7 +47,7 @@ spec:
               fi
       containers:
         - name: node
-          image: "{{ .Values.container.registry }}/{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
+          image: "{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
           imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
           volumeMounts:
             - name: node-runtime

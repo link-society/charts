@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: dashboard
-          image: "{{ .Values.container.registry }}/{{ .Values.dashboard.image.name }}:{{ .Values.dashboard.image.tag }}"
+          image: "{{ .Values.dashboard.image.name }}:{{ .Values.dashboard.image.tag }}"
           imagePullPolicy: {{ .Values.dashboard.image.pullPolicy }}
           ports:
             - name: http

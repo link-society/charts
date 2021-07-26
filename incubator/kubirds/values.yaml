@@ -1,13 +1,10 @@
-container:
-  registry: ghcr.io
-
 controller:
   enabled: yes
 
   replicas: 3
   image:
-    name: link-society/kubirds-controller
-    tag: latest
+    name: linksociety/kubirds-controller
+    tag: '1.0.0-rc3'
     pullPolicy: Always
 
   statusImage:
@@ -48,8 +45,8 @@ dashboard:
 
   replicas: 3
   image:
-    name: link-society/kubirds-dashboard
-    tag: latest
+    name: ghcr.io/link-society/kubirds-dashboard
+    tag: '1.0.0-rc3'
     pullPolicy: Always
 
   graphqlEndpoint:
