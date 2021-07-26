@@ -25,9 +25,13 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       terminationGracePeriodSeconds: 10
+      {{- with .Values.controller.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       initContainers:
         - name: init-node-runtime
-          image: "{{ .Values.container.registry }}/{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
+          image: "{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
           imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
           volumeMounts:
             - name: node-runtime
@@ -47,7 +51,7 @@ spec:
               fi
       containers:
         - name: node
-          image: "{{ .Values.container.registry }}/{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
+          image: "{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
           imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
           volumeMounts:
             - name: node-runtime
