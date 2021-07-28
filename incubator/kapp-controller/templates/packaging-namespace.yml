@@ -1,4 +1,4 @@
-{{ if .Values.controller.packagingNamespace }}
+{{ if .Values.controller.createNamespace }}
 ---
 apiVersion: v1
 kind: Namespace
