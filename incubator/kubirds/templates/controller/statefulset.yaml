@@ -57,9 +57,7 @@ spec:
             - name: node-runtime
               mountPath: /opt/kubirds
           command:
-            - /bin/sh
-            - '-c'
-            - source /opt/kubirds/env && yarn start
+            - /workspace/kubirds-controller
           env:
             - name: RABBITMQ_URL
             {{ if eq "static" .Values.controller.rabbitUrl.kind }}
