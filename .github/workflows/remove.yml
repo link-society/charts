@@ -40,6 +40,7 @@ jobs:
         uses: Azure/setup-helm@v1
       - name: rebuild@packaging
         run: |
+          rm public/${{ github.event.inputs.repository }}/${{ github.event.inputs.chart }}-${{ github.event.inputs.version }}.tgz
           helm repo index public/${{ github.event.inputs.repository }} --url https://charts.link-society.com/${{ github.event.inputs.repository }} || exit 1
       - name: publish@scm
         run: |
