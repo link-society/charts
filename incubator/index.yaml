@@ -3,7 +3,7 @@ entries:
   kubevisor:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-08-04T23:05:54.682356847Z"
+    created: "2021-08-04T23:06:49.439647241Z"
     description: Kubevisor Helm chart
     digest: 4d30a93ca13b3443898549c87dbc2722b1e861f6ff2fac5aac283482586adecf
     name: kubevisor
@@ -13,7 +13,7 @@ entries:
   kubevisor-curl-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-08-04T23:05:54.682578848Z"
+    created: "2021-08-04T23:06:49.439956562Z"
     description: Parametrable cURL Unit for Kubevisor
     digest: cd09d80e713c6cdbf3cc8f05c6f23f1553267bc41939da9e8069205d91295d55
     name: kubevisor-curl-unit
@@ -24,7 +24,7 @@ entries:
   kubevisor-sql-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-08-04T23:05:54.682810349Z"
+    created: "2021-08-04T23:06:49.440304685Z"
     description: A Helm chart for Kubernetes
     digest: 6837b602b5b89d2facf5ac0291e111a552c33f130b1a05a5a550b655e52260be
     name: kubevisor-sql-unit
@@ -35,7 +35,7 @@ entries:
   kubirds:
   - apiVersion: v2
     appVersion: 1.0.0-rc3
-    created: "2021-08-04T23:05:54.683260252Z"
+    created: "2021-08-04T23:06:49.440884623Z"
     description: Kubirds Helm chart
     digest: 097c356b341b28cadf96d649097a30a129af8bedfecc103c4d635d720440827a
     name: kubirds
@@ -46,7 +46,7 @@ entries:
   kubirds-curl-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-08-04T23:05:54.683538454Z"
+    created: "2021-08-04T23:06:49.441188443Z"
     description: Parametrable cURL Unit for Kubirds
     digest: 546ff47a7b82a8e2619e5fcf41798e63ca258ec841205f94e84ed15eb8cda9d2
     name: kubirds-curl-unit
@@ -57,7 +57,7 @@ entries:
   kubirds-klander-reactor:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-08-04T23:05:54.683744655Z"
+    created: "2021-08-04T23:06:49.44159177Z"
     description: Parametrable klander Reactor for Kubirds
     digest: e3dcf85a0cae304e96df85f9191b5195824bac1cec64954010f03daa604fadb2
     name: kubirds-klander-reactor
@@ -68,7 +68,7 @@ entries:
   kubirds-klifter-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-08-04T23:05:54.683936956Z"
+    created: "2021-08-04T23:06:49.441851287Z"
     description: Parametrable klifter Unit for Kubirds
     digest: 633fab10a98f3efdafcca1f5eb717672105f894b11a81f01a8ab39ef99b6ca58
     name: kubirds-klifter-unit
@@ -79,7 +79,7 @@ entries:
   rabbitmq-cluster-operator:
   - apiVersion: v2
     appVersion: 1.4.0
-    created: "2021-08-04T23:05:54.68603247Z"
+    created: "2021-08-04T23:06:49.443568301Z"
     description: RabbitMQ Cluster Operator
     digest: c3fd2abba6708084e4ead034c14811281de92dc0fdce50b9f2312bbe7ededbca
     name: rabbitmq-cluster-operator
@@ -87,4 +87,4 @@ entries:
     urls:
     - https://charts.link-society.com/incubator/rabbitmq-cluster-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-04T23:05:54.681853943Z"
+generated: "2021-08-04T23:06:49.438925293Z"
