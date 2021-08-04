@@ -1,0 +1,51 @@
+name: Remove package
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Chart repository (incubator or stable)'
+        required: true
+        default: incubator
+      chart:
+        description: 'Chart name'
+        required: true
+      version:
+        description: 'Chart version'
+        required: true
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout-index@scm
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: public
+      - name: validate-repository@inputs
+        if: github.event.inputs.repository != 'incubator' && github.event.inputs.repository != 'stable'
+        run: |
+          echo "Invalid repository"
+          exit 1
+      - name: validate-chart@inputs
+        run: |
+          if [ ! -f "public/${{ github.event.inputs.repository }}/${{ github.event.inputs.chart }}-${{ github.event.inputs.version }}.tgz" ]
+          then
+            echo "Unknown chart ${{ github.event.inputs.chart }}-${{ github.event.inputs.version }} in repository ${{ github.event.inputs.repository }}"
+            exit 1
+          fi
+      - name: helm@tools
+        uses: Azure/setup-helm@v1
+      - name: rebuild@packaging
+        run: |
+          helm repo index public/${{ github.event.inputs.repository }} --url https://charts.link-society.com/${{ github.event.inputs.repository }} || exit 1
+      - name: publish@scm
+        run: |
+          cd public
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m ":construction_worker: re-index chart repositories"
+          git push origin gh-pages
