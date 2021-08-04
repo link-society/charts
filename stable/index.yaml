@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   istio-base:
   - apiVersion: v1
-    created: "2021-08-03T19:59:23.955069999Z"
+    created: "2021-08-04T23:05:54.914372402Z"
     description: Helm chart for deploying Istio cluster resources and CRDs
-    digest: c0e4677141fabb901e0f459881f0de36d2a3d0d312435edcac88082cb6092332
+    digest: 094bda022346b2e217d61a7e562992dbe976f6a66bac74b6bab061d551826b45
     icon: https://istio.io/latest/favicons/android-192x192.png
     keywords:
     - istio
@@ -16,9 +16,9 @@ entries:
     version: 1.9.4
   istio-discovery:
   - apiVersion: v1
-    created: "2021-08-03T19:59:23.957091841Z"
+    created: "2021-08-04T23:05:54.916768817Z"
     description: Helm chart for istio control plane
-    digest: e7b990b57bc44ae90537198397ccdfce248d0df3c8e3ce8d7644e2be966fc9f5
+    digest: 99fa9db0c341a9192196bfa5a427854ba3f8d2e7934dd1d43de9fe3c7ca9ebc8
     icon: https://istio.io/latest/favicons/android-192x192.png
     keywords:
     - istio
@@ -32,9 +32,9 @@ entries:
     version: 1.9.4
   istio-egress:
   - apiVersion: v1
-    created: "2021-08-03T19:59:23.958162215Z"
+    created: "2021-08-04T23:05:54.917670223Z"
     description: Helm chart for deploying Istio gateways
-    digest: f1606cb60b6c587c0b92033f0341b531f847cedfcbcc627c3824e6e690e183df
+    digest: c7069dd41286fef17547375461bcc7f8c1f31f6b4df15b7e50386061d6d54262
     icon: https://istio.io/latest/favicons/android-192x192.png
     keywords:
     - istio
@@ -48,9 +48,9 @@ entries:
     version: 1.9.4
   istio-ingress:
   - apiVersion: v1
-    created: "2021-08-03T19:59:23.959261492Z"
+    created: "2021-08-04T23:05:54.918571129Z"
     description: Helm chart for deploying Istio gateways
-    digest: c2b106e57350a8857638750264e47e5aa6a100ebb2f697426da1ab64f35f3eda
+    digest: 4eb16ebac5ae993c11fcbd993bbd52b744cf99700d083cdaf57c5655d1c2be98
     icon: https://istio.io/latest/favicons/android-192x192.png
     keywords:
     - istio
@@ -62,4 +62,4 @@ entries:
     urls:
     - https://charts.link-society.com/stable/istio-ingress-1.9.4.tgz
     version: 1.9.4
-generated: "2021-08-03T19:59:23.952913748Z"
+generated: "2021-08-04T23:05:54.911671385Z"
