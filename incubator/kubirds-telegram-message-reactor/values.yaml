@@ -1,0 +1,20 @@
+---
+
+# User Configuration
+
+schedule: every 5 minutes
+
+labels: {}
+unitSelector: {}
+
+triggers:
+  success: yes
+  failure: yes
+  fixed: no
+  regression: no
+
+# Internal Configuration (can be overidden)
+
+image:
+  name: ghcr.io/link-society/kubirds-reactor-telegram-message
+  pullPolicy: IfNotPresent
