@@ -48,6 +48,21 @@ spec:
                         type: boolean
                       ref:
                         type: string
+                      refSelection:
+                        properties:
+                          semver:
+                            properties:
+                              constraints:
+                                type: string
+                              prereleases:
+                                properties:
+                                  identifiers:
+                                    items:
+                                      type: string
+                                    type: array
+                                type: object
+                            type: object
+                        type: object
                       secretRef:
                         description: 'Secret may include one or more keys: ssh-privatekey, ssh-knownhosts'
                         properties:
@@ -88,6 +103,21 @@ spec:
                         type: object
                       subPath:
                         type: string
+                      tagSelection:
+                        properties:
+                          semver:
+                            properties:
+                              constraints:
+                                type: string
+                              prereleases:
+                                properties:
+                                  identifiers:
+                                    items:
+                                      type: string
+                                    type: array
+                                type: object
+                            type: object
+                        type: object
                       url:
                         description: 'Example: username/app1-config:v0.1.0'
                         type: string
@@ -102,6 +132,21 @@ spec:
                           name:
                             description: Object is expected to be within same namespace
                             type: string
+                        type: object
+                      tagSelection:
+                        properties:
+                          semver:
+                            properties:
+                              constraints:
+                                type: string
+                              prereleases:
+                                properties:
+                                  identifiers:
+                                    items:
+                                      type: string
+                                    type: array
+                                type: object
+                            type: object
                         type: object
                     type: object
                 type: object
