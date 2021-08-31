@@ -49,6 +49,8 @@ spec:
                   fieldPath: metadata.namespace
             - name: KAPPCTRL_API_PORT
               value: "{{ .Values.controller.port }}"
+            - name: KAPPCTRL_SYSTEM_SERVICE
+              value: "{{ include "kapp-controller.fullname" . }}-packaging-api"
           ports:
             - name: api
               containerPort: {{ .Values.controller.port }}
