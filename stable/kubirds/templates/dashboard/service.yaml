@@ -1,0 +1,24 @@
+{{- if .Values.dashboard.enabled -}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "kubirds.fullname" . }}-dashboard
+  namespace: {{ .Release.Namespace }}
+  labels:
+    helm.sh/chart: {{ include "kubirds.chart" . }}
+    app.kubernetes.io/name: {{ include "kubirds.name" . }}-dashboard
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/part-of: kubirds
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: {{ include "kubirds.name" . }}-dashboard
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}
