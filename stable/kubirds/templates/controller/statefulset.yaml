@@ -1,0 +1,85 @@
+{{- if .Values.controller.enabled -}}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "kubirds.fullname" . }}-controller
+  namespace: {{ .Release.Namespace }}
+  labels:
+    helm.sh/chart: {{ template "kubirds.chart" . }}
+    app.kubernetes.io/name: {{ template "kubirds.name" . }}-controller
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/part-of: kubirds
+spec:
+  serviceName: {{ include "kubirds.fullname" . }}-controller
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "kubirds.name" . }}-controller
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "kubirds.name" . }}-controller
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      terminationGracePeriodSeconds: 10
+      {{- with .Values.controller.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      initContainers:
+        - name: init-node-runtime
+          image: "{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
+          imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
+          volumeMounts:
+            - name: node-runtime
+              mountPath: /opt/kubirds
+          command:
+            - /bin/bash
+            - '-c'
+            - |
+              set -ex
+              [[ `hostname` =~ -([0-9]+)$ ]] || exit 1
+              ordinal=${BASH_REMATCH[1]}
+              echo "export KUBIRDS_NAMESPACE=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)" > /opt/kubirds/env
+              if [[ $ordinal -eq 0 ]]; then
+                echo "export KUBIRDS_NODE_KIND=primary" >> /opt/kubirds/env
+              else
+                echo "export KUBIRDS_NODE_KIND=secondary" >> /opt/kubirds/env
+              fi
+      containers:
+        - name: node
+          image: "{{ .Values.controller.image.name }}:{{ .Values.controller.image.tag }}"
+          imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
+          volumeMounts:
+            - name: node-runtime
+              mountPath: /opt/kubirds
+          command:
+            - /workspace/kubirds-controller
+          env:
+            - name: RABBITMQ_URL
+            {{ if eq "static" .Values.controller.rabbitUrl.kind }}
+              {{ .Values.controller.rabbitUrl.static | toYaml | nindent 14 }}
+            {{ else }}
+              {{ .Values.controller.rabbitUrl.dynamic | toYaml | nindent 14 }}
+            {{ end }}
+            - name: KUBIRDS_REDIS_HOST
+            {{ if eq "static" .Values.controller.redis.host.kind }}
+              {{ .Values.controller.redis.host.static | toYaml | nindent 14 }}
+            {{ else }}
+              {{ .Values.controller.redis.host.dynamic | toYaml | nindent 14 }}
+            {{ end }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "kubirds.fullname" . }}-controller
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP
+      volumes:
+        - name: node-runtime
+          emptyDir:
+            medium: Memory
+{{- end -}}

@@ -1,0 +1,67 @@
+controller:
+  enabled: yes
+
+  replicas: 3
+  image:
+    name: linksociety/kubirds-controller
+    tag: '1.0.0-rc3'
+    pullPolicy: Always
+    pullSecrets: []
+
+  statusImage:
+    name: lachlanevenson/k8s-kubectl
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  redis:
+    host:
+      kind: static
+      static:
+        value: http://localhost:6739
+      dynamic:
+        valueFrom:
+          secretKeyRef:
+            name: kubirds-redis-access
+            key: REDIS_HOST
+
+    image:
+      name: redis
+      tag: alpine
+      pullPolicy: IfNotPresent
+
+  serviceAccountName: default
+
+  rabbitUrl:
+    kind: static
+    static:
+      value: amqp://guest:guest@localhost:5672/
+    dynamic:
+      valueFrom:
+        secretKeyRef:
+          name: kubirds-rabbitmq-access
+          key: RABBITMQ_URL
+
+dashboard:
+  enabled: no
+
+  replicas: 3
+  image:
+    name: ghcr.io/link-society/kubirds-dashboard
+    tag: '1.0.0-rc3'
+    pullPolicy: Always
+    pullSecrets: []
+
+  graphqlEndpoint:
+    http: https://status.link-society.com/controller/graphql
+    ws: wss://status.link-society.com/controller/graphql
+
+ingress:
+  enabled: no
+
+  host: status.link-society.com
+
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+
+nameOverride: ""
+fullnameOverride: ""
