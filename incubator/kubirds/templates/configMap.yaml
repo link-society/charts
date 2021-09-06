@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "kubirds.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    helm.sh/chart: {{ template "kubirds.chart" . }}
+    app.kubernetes.io/name: {{ template "kubirds.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/part-of: kubirds
+data:
+  KUBIRDS_SERVICE_NAME: "{{ include "kubirds.fullname" . }}"
+  KUBIRDS_STATUS_IMAGE_NAME: "{{ .Values.operator.statusImage.name }}:{{ .Values.operator.statusImage.tag }}"
+  KUBIRDS_STATUS_IMAGE_PULL_POLICY: {{ .Values.operator.statusImage.pullPolicy }}
+  KUBIRDS_REDIS_IMAGE_NAME: "{{ .Values.operator.redis.image.name }}:{{ .Values.operator.redis.image.tag }}"
+  KUBIRDS_REDIS_IMAGE_PULL_POLICY: "{{ .Values.operator.redis.image.pullPolicy }}"
+  KUBIRDS_REDIS_SECRET_NAME: "{{ include "kubirds.fullname" . }}-redis"
+  KUBIRDS_SERVICEACCOUNT: "{{ .Values.operator.serviceAccountName }}"
