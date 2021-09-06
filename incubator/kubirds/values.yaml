@@ -1,11 +1,9 @@
-controller:
-  enabled: yes
-
+operator:
   replicas: 3
   image:
-    name: linksociety/kubirds-controller
-    tag: '1.0.0-rc3'
-    pullPolicy: Always
+    name: linksociety/kubirds-operator
+    tag: '2.0.0-alpha1'
+    pullPolicy: IfNotPresent
     pullSecrets: []
 
   statusImage:
@@ -30,30 +28,6 @@ controller:
       pullPolicy: IfNotPresent
 
   serviceAccountName: default
-
-  rabbitUrl:
-    kind: static
-    static:
-      value: amqp://guest:guest@localhost:5672/
-    dynamic:
-      valueFrom:
-        secretKeyRef:
-          name: kubirds-rabbitmq-access
-          key: RABBITMQ_URL
-
-dashboard:
-  enabled: no
-
-  replicas: 3
-  image:
-    name: ghcr.io/link-society/kubirds-dashboard
-    tag: '1.0.0-rc3'
-    pullPolicy: Always
-    pullSecrets: []
-
-  graphqlEndpoint:
-    http: https://status.link-society.com/controller/graphql
-    ws: wss://status.link-society.com/controller/graphql
 
 ingress:
   enabled: no
