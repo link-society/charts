@@ -26,6 +26,16 @@ redis:
     tag: alpine
     pullPolicy: IfNotPresent
 
+erlangCookie:
+  kind: static
+  static:
+    value: ""
+  dynamic:
+    valueFrom:
+      secretKeyRef:
+        name: kubirds-erlang-cookie
+        key: ERLANG_COOKIE
+
 pipelineServiceAccount: default
 
 nameOverride: ""
