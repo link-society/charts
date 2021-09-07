@@ -44,3 +44,9 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 10
