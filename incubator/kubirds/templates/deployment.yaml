@@ -38,12 +38,27 @@ spec:
             {{ else }}
               {{ .Values.redis.host.dynamic | toYaml | nindent 14 }}
             {{ end }}
+            - name: RELEASE_DISTRIBUTION
+              value: name
+            - name: RELEASE_NODE
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: RELEASE_COOKIE
+            {{ if eq "static" .Values.erlangCookie.kind }}
+              {{ .Values.erlangCookie.static | toYaml | nindent 14 }}
+            {{ else }}
+              {{ .Values.erlangCookie.dynamic | toYaml | nindent 14 }}
+            {{ end }}
           envFrom:
             - configMapRef:
                 name: {{ include "kubirds.fullname" . }}
           ports:
             - name: http
               containerPort: 5000
+              protocol: TCP
+            - name: epmd
+              containerPort: 4369
               protocol: TCP
           readinessProbe:
             httpGet:

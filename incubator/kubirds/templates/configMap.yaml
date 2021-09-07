@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/part-of: kubirds
 data:
-  KUBIRDS_SERVICE_NAME: "{{ include "kubirds.fullname" . }}"
+  KUBIRDS_SERVICE_NAME: "{{ include "kubirds.fullname" . }}-headless"
   KUBIRDS_STATUS_IMAGE_NAME: "{{ .Values.statusImage.name }}:{{ .Values.statusImage.tag }}"
   KUBIRDS_STATUS_IMAGE_PULL_POLICY: {{ .Values.statusImage.pullPolicy }}
   KUBIRDS_REDIS_IMAGE_NAME: "{{ .Values.redis.image.name }}:{{ .Values.redis.image.tag }}"

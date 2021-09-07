@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "kubirds.fullname" . }}-headless
+  namespace: {{ .Release.Namespace }}
+  labels:
+    helm.sh/chart: {{ include "kubirds.chart" . }}
+    app.kubernetes.io/name: {{ include "kubirds.name" . }}-headless
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/part-of: kubirds
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - port: 4369
+      targetPort: epmd
+      protocol: TCP
+      name: epmd
+  selector:
+    app.kubernetes.io/name: {{ include "kubirds.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
