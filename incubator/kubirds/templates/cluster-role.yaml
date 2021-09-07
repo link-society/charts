@@ -3,6 +3,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: {{ include "kubirds.fullname" . }}-operator-minimal
+  labels:
+    helm.sh/chart: {{ include "kubirds.chart" . }}
+    app.kubernetes.io/name: {{ include "kubirds.name" . }}-operator-minimal
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/part-of: kubirds
 rules:
   - apiGroups: ["tekton.dev"]
     resources: ["pipelines", "pipelineruns"]
