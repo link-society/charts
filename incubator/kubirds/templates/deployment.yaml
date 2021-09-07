@@ -38,8 +38,6 @@ spec:
             {{ else }}
               {{ .Values.redis.host.dynamic | toYaml | nindent 14 }}
             {{ end }}
-            - name: RELEASE_DISTRIBUTION
-              value: name
             - name: RELEASE_NODE_IP
               valueFrom:
                 fieldRef:
