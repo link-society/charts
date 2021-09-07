@@ -40,7 +40,7 @@ spec:
             {{ end }}
             - name: RELEASE_DISTRIBUTION
               value: name
-            - name: RELEASE_NODE
+            - name: RELEASE_NODE_IP
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
