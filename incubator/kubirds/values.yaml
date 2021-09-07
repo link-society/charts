@@ -1,41 +1,32 @@
-operator:
-  replicas: 3
+replicas: 3
+image:
+  name: linksociety/kubirds-operator
+  tag: '2.0.0-alpha1'
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+statusImage:
+  name: lachlanevenson/k8s-kubectl
+  tag: latest
+  pullPolicy: IfNotPresent
+
+redis:
+  host:
+    kind: static
+    static:
+      value: http://localhost:6739
+    dynamic:
+      valueFrom:
+        secretKeyRef:
+          name: kubirds-redis-access
+          key: REDIS_HOST
+
   image:
-    name: linksociety/kubirds-operator
-    tag: '2.0.0-alpha1'
-    pullPolicy: IfNotPresent
-    pullSecrets: []
-
-  statusImage:
-    name: lachlanevenson/k8s-kubectl
-    tag: latest
+    name: redis
+    tag: alpine
     pullPolicy: IfNotPresent
 
-  redis:
-    host:
-      kind: static
-      static:
-        value: http://localhost:6739
-      dynamic:
-        valueFrom:
-          secretKeyRef:
-            name: kubirds-redis-access
-            key: REDIS_HOST
-
-    image:
-      name: redis
-      tag: alpine
-      pullPolicy: IfNotPresent
-
-  serviceAccountName: default
-
-ingress:
-  enabled: no
-
-  host: status.link-society.com
-
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
+serviceAccountName: default
 
 nameOverride: ""
 fullnameOverride: ""

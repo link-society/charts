@@ -22,20 +22,20 @@ spec:
         app.kubernetes.io/name: {{ include "kubirds.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
-      {{- with .Values.operator.image.pullSecrets }}
+      {{- with .Values.image.pullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
         - name: main
-          image: "{{ .Values.operator.image.name }}:{{ .Values.operator.image.tag }}"
-          imagePullPolicy: {{ .Values.operator.image.pullPolicy }}
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: KUBIRDS_REDIS_HOST
-            {{ if eq "static" .Values.operator.redis.host.kind }}
-              {{ .Values.operator.redis.host.static | toYaml | nindent 14 }}
+            {{ if eq "static" .Values.redis.host.kind }}
+              {{ .Values.redis.host.static | toYaml | nindent 14 }}
             {{ else }}
-              {{ .Values.operator.redis.host.dynamic | toYaml | nindent 14 }}
+              {{ .Values.redis.host.dynamic | toYaml | nindent 14 }}
             {{ end }}
           envFrom:
             - configMapRef:
