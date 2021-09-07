@@ -3,6 +3,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: {{ include "kubirds.fullname" . }}-operator-minimal
+  labels:
+    helm.sh/chart: {{ include "kubirds.chart" . }}
+    app.kubernetes.io/name: {{ include "kubirds.name" . }}-operator-minimal
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/part-of: kubirds
 subjects:
   - kind: ServiceAccount
     name: {{ include "kubirds.fullname" . }}
