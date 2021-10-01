@@ -16,3 +16,6 @@ rules:
   - apiGroups: ["kubirds.com"]
     resources: ["units", "reactors", "inhibitors"]
     verbs: ["get", "watch", "list", "create", "update", "patch", "delete"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["create", "update", "patch", "delete"]
