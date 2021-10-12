@@ -17,10 +17,14 @@ spec:
       openAPIV3Schema:
         properties:
           apiVersion:
-            description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
             type: string
           kind:
-            description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
             type: string
           metadata:
             type: object
@@ -45,7 +49,8 @@ spec:
                   spec:
                     properties:
                       canceled:
-                        description: Canceled when set to true will stop all active changes
+                        description: Canceled when set to true will stop all active
+                          changes
                         type: boolean
                       cluster:
                         properties:
@@ -117,10 +122,12 @@ spec:
                                       type: object
                                   type: object
                                 secretRef:
-                                  description: 'Secret may include one or more keys: ssh-privatekey, ssh-knownhosts'
+                                  description: 'Secret may include one or more keys:
+                                    ssh-privatekey, ssh-knownhosts'
                                   properties:
                                     name:
-                                      description: Object is expected to be within same namespace
+                                      description: Object is expected to be within
+                                        same namespace
                                       type: string
                                   type: object
                                 subPath:
@@ -138,7 +145,8 @@ spec:
                                     secretRef:
                                       properties:
                                         name:
-                                          description: Object is expected to be within same namespace
+                                          description: Object is expected to be within
+                                            same namespace
                                           type: string
                                       type: object
                                     url:
@@ -150,10 +158,12 @@ spec:
                             http:
                               properties:
                                 secretRef:
-                                  description: 'Secret may include one or more keys: username, password'
+                                  description: 'Secret may include one or more keys:
+                                    username, password'
                                   properties:
                                     name:
-                                      description: Object is expected to be within same namespace
+                                      description: Object is expected to be within
+                                        same namespace
                                       type: string
                                   type: object
                                 sha256:
@@ -161,16 +171,21 @@ spec:
                                 subPath:
                                   type: string
                                 url:
-                                  description: 'URL can point to one of following formats: text, tgz, zip'
+                                  description: 'URL can point to one of following
+                                    formats: text, tgz, zip'
                                   type: string
                               type: object
                             image:
                               properties:
                                 secretRef:
-                                  description: 'Secret may include one or more keys: username, password, token. By default anonymous access is used for authentication. TODO support docker config formated secret'
+                                  description: 'Secret may include one or more keys:
+                                    username, password, token. By default anonymous
+                                    access is used for authentication. TODO support
+                                    docker config formated secret'
                                   properties:
                                     name:
-                                      description: Object is expected to be within same namespace
+                                      description: Object is expected to be within
+                                        same namespace
                                       type: string
                                   type: object
                                 subPath:
@@ -199,10 +214,14 @@ spec:
                                 image:
                                   type: string
                                 secretRef:
-                                  description: 'Secret may include one or more keys: username, password, token. By default anonymous access is used for authentication. TODO support docker config formated secret'
+                                  description: 'Secret may include one or more keys:
+                                    username, password, token. By default anonymous
+                                    access is used for authentication. TODO support
+                                    docker config formated secret'
                                   properties:
                                     name:
-                                      description: Object is expected to be within same namespace
+                                      description: Object is expected to be within
+                                        same namespace
                                       type: string
                                   type: object
                                 tagSelection:
@@ -250,10 +269,13 @@ spec:
                           type: object
                         type: array
                       noopDelete:
-                        description: When NoopDeletion set to true, App deletion should delete App CR but preserve App's associated resources
+                        description: When NoopDeletion set to true, App deletion should
+                          delete App CR but preserve App's associated resources
                         type: boolean
                       paused:
-                        description: Paused when set to true will ignore all pending changes, once it set back to false, pending changes will be applied
+                        description: Paused when set to true will ignore all pending
+                          changes, once it set back to false, pending changes will
+                          be applied
                         type: boolean
                       serviceAccountName:
                         type: string
@@ -382,7 +404,9 @@ spec:
                 - spec
                 type: object
               valuesSchema:
-                description: valuesSchema can be used to show template values that can be configured by users when a Package is installed in an OpenAPI schema format.
+                description: valuesSchema can be used to show template values that
+                  can be configured by users when a Package is installed in an OpenAPI
+                  schema format.
                 properties:
                   openAPIv3:
                     nullable: true
