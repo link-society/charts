@@ -14,6 +14,7 @@ image:
 controller:
   port: 10350
   createNamespace: yes
+  createApiService: yes
 
 imagePullSecrets: []
 nameOverride: ""
