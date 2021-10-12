@@ -1,0 +1,83 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "kapp-controller.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    kbld.k14s.io/images: |
+      - Metas:
+        - Type: git
+          Dirty: false
+          RemoteURL: {{ .Values.metadata.images.remote }}
+          SHA: {{ .Values.metadata.images.revision }}
+        URL: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+  labels:
+    {{- include "kapp-controller.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  selector:
+    matchLabels:
+      {{- include "kapp-controller.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "kapp-controller.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "kapp-controller.serviceAccountName" . }}
+      containers:
+        - name: kapp-controller
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - -packaging-global-namespace=kapp-controller-packaging-global
+          env:
+            - name: KAPPCTRL_MEM_TMP_DIR
+              value: /etc/kappctrl-mem-tmp
+            - name: KAPPCTRL_SYSTEM_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KAPPCTRL_API_PORT
+              value: "{{ .Values.controller.port }}"
+            - name: KAPPCTRL_SYSTEM_SERVICE
+              value: "{{ include "kapp-controller.fullname" . }}-packaging-api"
+          ports:
+            - name: api
+              containerPort: {{ .Values.controller.port }}
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          volumeMounts:
+            - name: template-fs
+              mountPath: /etc/kappctrl-mem-tmp
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      serviceAccount: {{ include "kapp-controller.serviceAccountName" . }}
+      volumes:
+        - name: template-fs
+          emptyDir:
+            medium: Memory
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

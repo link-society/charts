@@ -1,0 +1,9 @@
+{{ if .Values.controller.createNamespace }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kapp-controller-packaging-global
+  labels:
+    {{- include "kapp-controller.labels" . | nindent 4 }}
+{{ end }}
