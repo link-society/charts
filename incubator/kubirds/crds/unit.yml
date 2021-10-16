@@ -1,5 +1,5 @@
 ---
-apiVersion: apiextensions.k8s.io/v1beta1
+apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: units.kubirds.com
@@ -12,130 +12,148 @@ spec:
       - u
     singular: unit
   scope: Namespaced
-  validation:
-    openAPIV3Schema:
-      properties:
-        spec:
+  versions:
+    - name: v1
+      schema:
+        openAPIV3Schema:
           properties:
-            env:
-              items:
-                properties:
-                  name:
-                    minLength: 1
-                    type: string
-                  value:
-                    type: string
-                  valueFrom:
-                    properties:
-                      configMapKeyRef:
-                        properties:
-                          key:
-                            minLength: 1
-                            type: string
-                          name:
-                            minLength: 1
-                            type: string
-                          optional:
-                            type: boolean
-                        required:
-                          - name
-                          - key
-                        type: object
-                      secretKeyRef:
-                        properties:
-                          key:
-                            minLength: 1
-                            type: string
-                          name:
-                            minLength: 1
-                            type: string
-                          optional:
-                            type: boolean
-                        required:
-                          - name
-                          - key
-                        type: object
-                    type: object
-                required:
-                  - name
-                type: object
-              type: array
-            envFrom:
-              items:
-                properties:
-                  configMapRef:
-                    properties:
-                      name:
-                        minLength: 1
-                        type: string
-                      optional:
-                        type: boolean
-                    required:
-                      - name
-                    type: object
-                  prefix:
-                    minLength: 1
-                    type: string
-                  secretRef:
-                    properties:
-                      name:
-                        minLength: 1
-                        type: string
-                      optional:
-                        type: boolean
-                    required:
-                      - name
-                    type: object
-                type: object
-              type: array
-            image:
+            spec:
               properties:
-                command:
+                env:
+                  items:
+                    properties:
+                      name:
+                        minLength: 1
+                        type: string
+                      value:
+                        type: string
+                      valueFrom:
+                        properties:
+                          configMapKeyRef:
+                            properties:
+                              key:
+                                minLength: 1
+                                type: string
+                              name:
+                                minLength: 1
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                              - name
+                              - key
+                            type: object
+                          secretKeyRef:
+                            properties:
+                              key:
+                                minLength: 1
+                                type: string
+                              name:
+                                minLength: 1
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                              - name
+                              - key
+                            type: object
+                        type: object
+                    required:
+                      - name
+                    type: object
+                  type: array
+                envFrom:
+                  items:
+                    properties:
+                      configMapRef:
+                        properties:
+                          name:
+                            minLength: 1
+                            type: string
+                          optional:
+                            type: boolean
+                        required:
+                          - name
+                        type: object
+                      prefix:
+                        minLength: 1
+                        type: string
+                      secretRef:
+                        properties:
+                          name:
+                            minLength: 1
+                            type: string
+                          optional:
+                            type: boolean
+                        required:
+                          - name
+                        type: object
+                    type: object
+                  type: array
+                image:
+                  properties:
+                    command:
+                      minLength: 1
+                      type: string
+                    name:
+                      minLength: 1
+                      type: string
+                    pullPolicy:
+                      enum:
+                        - IfNotPresent
+                        - Always
+                        - Never
+                      type: string
+                  required:
+                    - name
+                    - command
+                  type: object
+                schedule:
                   minLength: 1
                   type: string
-                name:
-                  minLength: 1
-                  type: string
-                pullPolicy:
-                  enum:
-                    - IfNotPresent
-                    - Always
-                    - Never
-                  type: string
+                volumes:
+                  items:
+                    properties:
+                      mountPath:
+                        minLength: 1
+                        type: string
+                      name:
+                        minLength: 1
+                        type: string
+                    required:
+                      - name
+                      - mountPath
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
+                  type: array
               required:
-                - name
-                - command
+                - image
+                - schedule
               type: object
-            schedule:
-              minLength: 1
-              type: string
-            volumes:
-              items:
-                properties:
-                  mountPath:
-                    minLength: 1
-                    type: string
-                  name:
-                    minLength: 1
-                    type: string
-                required:
-                  - name
-                  - mountPath
-                type: object
-                x-kubernetes-preserve-unknown-fields: true
-              type: array
+            status:
+              properties:
+                conditions:
+                  items:
+                    properties:
+                      lastTransitionTime:
+                        type: string
+                      status:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                      - type
+                      - status
+                      - lastTransitionTime
+                    type: object
+                  type: array
+                lastState:
+                  type: string
+                lastStateSeen:
+                  type: string
+              type: object
           required:
-            - image
-            - schedule
+            - spec
           type: object
-        status:
-          properties:
-            lastState:
-              type: string
-            lastStateSeen:
-              type: string
-          type: object
-      required:
-        - spec
-      type: object
-  version: v1
+      served: true
+      storage: true
