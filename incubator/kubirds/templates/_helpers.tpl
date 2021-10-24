@@ -30,3 +30,14 @@ Create chart name and version as used by the chart label.
 {{- define "kubirds.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{/*
+Ensure TLS values are set
+*/}}
+{{- if nil .Values.tls.caBundle }}
+{{- fail "Missing .tls.caBundle value" }}
+{{- end }}
+
+{{- if nil .Values.tls.secretName }}
+{{- fail "Missing .tls.secretName value" }}
+{{- end }}

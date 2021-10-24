@@ -48,12 +48,20 @@ spec:
             {{ else }}
               {{ .Values.erlangCookie.dynamic | toYaml | nindent 14 }}
             {{ end }}
+            - name: KUBIRDS_API_SSL_KEY_PATH
+              value: /etc/ssl/kubirds/tls.key
+            - name: KUBIRDS_API_SSL_CERT_PATH
+              value: /etc/ssl/kubirds/tls.crt
           envFrom:
             - configMapRef:
                 name: {{ include "kubirds.fullname" . }}
+          volumeMounts:
+            - name: tls-certs
+              readOnly: yes
+              mountPath: /etc/ssl/kubirds
           ports:
-            - name: http
-              containerPort: 5000
+            - name: https
+              containerPort: 5001
               protocol: TCP
             - name: epmd
               containerPort: 4369
@@ -61,6 +69,10 @@ spec:
           readinessProbe:
             httpGet:
               path: /health
-              port: http
+              port: https
             initialDelaySeconds: 30
             periodSeconds: 10
+      volumes:
+        - name: tls-certs
+          secret:
+            secretName: {{ .Values.tls.secretName }}
