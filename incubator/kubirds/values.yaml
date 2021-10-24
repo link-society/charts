@@ -38,5 +38,9 @@ erlangCookie:
 
 pipelineServiceAccount: default
 
+tls:
+  caBundle: null
+  secretName: null
+
 nameOverride: ""
 fullnameOverride: ""
