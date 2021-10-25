@@ -3,9 +3,9 @@ entries:
   kapp-controller:
   - apiVersion: v2
     appVersion: 0.27.0
-    created: "2021-10-24T22:31:11.525041546Z"
+    created: "2021-10-25T00:35:34.699290538Z"
     description: Lightweight continuous delivery to Kubernetes
-    digest: ba739bbf6e5846a478f2b676856dd6048a028b2eeae90ba758c7fb46ea29f553
+    digest: 82376812558f30e84842846b5df8f236550e57351c434ae056f58279f2e85a67
     name: kapp-controller
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   kubirds:
   - apiVersion: v2
     appVersion: 2.0.0-alpha1
-    created: "2021-10-24T22:31:11.527359878Z"
+    created: "2021-10-25T00:35:34.700790241Z"
     description: Kubirds Helm chart
-    digest: cbf6171ddcfb422aa80da143a0f566afaf28ccdfafc6f9eca8d9545e89ef8136
+    digest: ff89130d81847b51e22f1f9197a7dba08dc24f00ad03f271ac75fac4645be2c6
     name: kubirds
     type: application
     urls:
@@ -24,7 +24,7 @@ entries:
     version: 2.0.0
   - apiVersion: v2
     appVersion: 1.0.0-rc3
-    created: "2021-10-24T22:31:11.52607366Z"
+    created: "2021-10-25T00:35:34.700076739Z"
     description: Kubirds Helm chart
     digest: e2f7216f872d6192c5a913cb4ff969d0c0348415afeb8da116272b1a5143f627
     name: kubirds
@@ -35,9 +35,9 @@ entries:
   kubirds-curl-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-10-24T22:31:11.527625082Z"
+    created: "2021-10-25T00:35:34.701073141Z"
     description: Parametrable cURL Unit for Kubirds
-    digest: 40519c990d177320ed8318fc05a73aca0b934948cdcd98302f1afdac0840a8ea
+    digest: d186c23fe5eacb81b9f09125ea613d30fae76ae2c28fe42b37f3c02dd7fb6a3b
     name: kubirds-curl-unit
     type: application
     urls:
@@ -46,9 +46,9 @@ entries:
   kubirds-klander-reactor:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-10-24T22:31:11.527855185Z"
+    created: "2021-10-25T00:35:34.701335142Z"
     description: Parametrable klander Reactor for Kubirds
-    digest: 9219ac37410e727de6dc3f5cb5e8dccd936ff4ef22d11cf7866fe97838cbbe55
+    digest: af17a83fb53e76adc01d41a443185d004e801c66982752db7fcb1abd6102c945
     name: kubirds-klander-reactor
     type: application
     urls:
@@ -57,9 +57,9 @@ entries:
   kubirds-klifter-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-10-24T22:31:11.528070388Z"
+    created: "2021-10-25T00:35:34.701608543Z"
     description: Parametrable klifter Unit for Kubirds
-    digest: 97601abfccff73673f12fd1369dc398b78e54c24db3e30fe4eb15ca317d66c0a
+    digest: 57333c7ba26938aa595978556023f5a401f92e2e65731aea22c0545aea2d4ea5
     name: kubirds-klifter-unit
     type: application
     urls:
@@ -68,12 +68,12 @@ entries:
   rabbitmq-cluster-operator:
   - apiVersion: v2
     appVersion: 1.4.0
-    created: "2021-10-24T22:31:11.5289893Z"
+    created: "2021-10-25T00:35:34.702977145Z"
     description: RabbitMQ Cluster Operator
-    digest: 57c8f90796d0ba97f4382d019ddfa6c783774aa85b2d5738418da072252f1b43
+    digest: 8b0313074279f3148bec5c3d9e84ef4d67d76aa0f01397f326f185056f546d42
     name: rabbitmq-cluster-operator
     type: application
     urls:
     - https://charts.link-society.com/incubator/rabbitmq-cluster-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2021-10-24T22:31:11.524067633Z"
+generated: "2021-10-25T00:35:34.698201535Z"
