@@ -68,6 +68,7 @@ spec:
               protocol: TCP
           readinessProbe:
             httpGet:
+              scheme: HTTPS
               path: /health
               port: https
             initialDelaySeconds: 30
