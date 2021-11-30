@@ -36,8 +36,8 @@ metadata:
     app.kubernetes.io/part-of: kubirds
 rules:
   - apiGroups: ["api.kubirds.com"]
-    nonResources: ["/apis/api.kubirds.com/v1"]
-    verbs: ["post"]
+    nonResourceURLs: ["/apis/api.kubirds.com/v1"]
+    verbs: ["get", "post"]
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
