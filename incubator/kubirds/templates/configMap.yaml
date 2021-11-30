@@ -17,4 +17,3 @@ data:
   KUBIRDS_REDIS_IMAGE_NAME: "{{ .Values.redis.image.name }}:{{ .Values.redis.image.tag }}"
   KUBIRDS_REDIS_IMAGE_PULL_POLICY: "{{ .Values.redis.image.pullPolicy }}"
   KUBIRDS_REDIS_SECRET_NAME: "{{ include "kubirds.fullname" . }}-redis"
-  KUBIRDS_SERVICEACCOUNT: "{{ .Values.pipelineServiceAccount }}"

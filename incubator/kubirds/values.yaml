@@ -6,7 +6,7 @@ image:
   pullSecrets: []
 
 statusImage:
-  name: lachlanevenson/k8s-kubectl
+  name: alpine
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -35,8 +35,6 @@ erlangCookie:
       secretKeyRef:
         name: kubirds-erlang-cookie
         key: ERLANG_COOKIE
-
-pipelineServiceAccount: default
 
 tls:
   caBundle: null
