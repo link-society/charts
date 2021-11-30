@@ -35,8 +35,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/part-of: kubirds
 rules:
-  - apiGroups: ["api.kubirds.com"]
-    nonResourceURLs: ["/apis/api.kubirds.com/v1"]
+  - nonResourceURLs: ["/apis/api.kubirds.com/v1"]
     verbs: ["get", "post"]
 
 ---
