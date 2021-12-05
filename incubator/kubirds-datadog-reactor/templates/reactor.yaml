@@ -1,0 +1,35 @@
+---
+apiVersion: kubirds.com/v1
+kind: Reactor
+metadata:
+  name: {{ include "kubirds-datadog-reactor.fullname" . }}
+  labels:
+    {{- include "kubirds-datadog-reactor.labels" . | nindent 4 }}
+    {{ if .Values.labels }}
+    {{ .Values.labels | toYaml | nindent 4 }}
+    {{ end}}
+spec:
+  unitSelector:
+    {{ if .Values.unitSelector }}
+    {{ .Values.unitSelector | toYaml | nindent 4 }}
+    {{ end}}
+  image:
+    name: {{ .Values.image.name }}
+    pullPolicy: {{ .Values.image.pullPolicy }}
+    command: >
+      curl
+        -X POST
+        -H "Content-Type: text/json"
+        -H "DD-API-KEY: $API_KEY"
+        --data-raw @$UNIT_OUTPUT
+        $API
+  triggers:
+    success: {{ .Values.triggers.success }}
+    failure: {{ .Values.triggers.failure }}
+    fixed: {{ .Values.triggers.fixed }}
+    regression: {{ .Values.triggers.regression }}
+  env:
+    - name: API
+      {{ .Values.api | toYaml | nindent 6 }}
+    - name: API_KEY
+      {{ .Values.api_key | toYaml | nindent 6 }}

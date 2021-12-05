@@ -1,0 +1,34 @@
+---
+apiVersion: kubirds.com/v1
+kind: Unit
+metadata:
+  name: {{ include "kubirds-datadog-unit.fullname" . }}
+  labels:
+    {{- include "kubirds-datadog-unit.labels" . | nindent 4 }}
+    {{ if .Values.labels }}
+    {{ .Values.labels | toYaml | nindent 4 }}
+    {{ end}}
+spec:
+  schedule: {{ .Values.schedule }}
+  image:
+    name: {{ .Values.image.name }}
+    pullPolicy: {{ .Values.image.pullPolicy }}
+    command: >
+      curl
+        -H "Content-Type: application/json"
+        -H "DD-API-KEY: $API_KEY"
+        -H "DD-APPLICATION-KEY: $APP_KEY"
+        $API?from=$FROM&to=$TO&query=$QUERY
+  env:
+    - name: API
+      {{ .Values.api | toYaml | nindent 6 }}
+    - name: API_KEY
+      {{ .Values.api_key | toYaml | nindent 6 }}
+    - name: APP_KEY
+      {{ .Values.app_key | toYaml | nindent 6 }}
+    - name: FROM
+      {{ .Values.from | toYaml | nindent 6 }}
+    - name: TO
+      {{ .Values.to | toYaml | nindent 6 }}
+    - name: QUERY
+      {{ .Values.query | toYaml | nindent 6 }}

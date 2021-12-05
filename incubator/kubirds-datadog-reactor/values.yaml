@@ -1,0 +1,23 @@
+---
+
+# User Configuration
+labels: {}
+unitSelector: {}
+
+triggers:
+  success: yes
+  failure: yes
+  fixed: no
+  regression: no
+
+# Internal Configuration (can be overidden)
+
+image:
+  name: curlimages/curl:latest
+  pullPolicy: IfNotPresent
+
+api:
+  value: https://api.datadogghq.com/api/v1/series
+
+api_key:
+  value: ''
