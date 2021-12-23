@@ -1,0 +1,36 @@
+{{- $caName := printf "%s-ca" (include "kubirds-operator.name" .) -}}
+{{- $commonName := include "kubirds-operator.fullname" . -}}
+{{- $dnsNames := list (printf "%s.%s" (include "kubirds-operator.fullname" .) .Release.Namespace) (printf "%s.%s.svc" (include "kubirds-operator.fullname" .) .Release.Namespace) -}}
+{{- $ca := genCA $caName 365 -}}
+{{- $cert := genSignedCert $commonName nil $dnsNames 365 $ca -}}
+{{- $caBundle := printf "%s\n%s\n" $ca.Cert $ca.Key -}}
+
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/tls
+metadata:
+  name: {{ include "kubirds-operator.fullname" . }}-tls
+  labels:
+    {{- include "kubirds-operator.labels" . | nindent 4 }}
+data:
+  ca.crt: {{ $caBundle | b64enc | quote }}
+  tls.crt: {{ $cert.Cert | b64enc | quote }}
+  tls.key: {{ $cert.Key | b64enc | quote }}
+
+---
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1.api.kubirds.com
+  labels:
+    {{- include "kubirds-operator.labels" . | nindent 4 }}
+spec:
+  group: api.kubirds.com
+  groupPriorityMinimum: 100
+  version: v1
+  versionPriority: 100
+  service:
+    name: {{ include "kubirds-operator.fullname" . }}
+    namespace: {{ .Release.Namespace }}
+  caBundle: {{ $caBundle | b64enc | quote }}

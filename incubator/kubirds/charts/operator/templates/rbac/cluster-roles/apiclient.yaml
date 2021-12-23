@@ -1,0 +1,10 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "kubirds-operator.fullname" . }}-apiclient
+  labels:
+    {{- include "kubirds-operator.labels" . | nindent 4 }}
+rules:
+  - nonResourceURLs: ["/apis/api.kubirds.com/v1"]
+    verbs: ["get", "post"]
