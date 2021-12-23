@@ -1,0 +1,161 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: units.kubirds.com
+spec:
+  group: kubirds.com
+  names:
+    kind: Unit
+    plural: units
+    shortNames:
+      - u
+    singular: unit
+  scope: Namespaced
+  versions:
+    - name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            spec:
+              properties:
+                env:
+                  items:
+                    properties:
+                      name:
+                        minLength: 1
+                        type: string
+                      value:
+                        type: string
+                      valueFrom:
+                        properties:
+                          configMapKeyRef:
+                            properties:
+                              key:
+                                minLength: 1
+                                type: string
+                              name:
+                                minLength: 1
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                              - name
+                              - key
+                            type: object
+                          secretKeyRef:
+                            properties:
+                              key:
+                                minLength: 1
+                                type: string
+                              name:
+                                minLength: 1
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                              - name
+                              - key
+                            type: object
+                        type: object
+                    required:
+                      - name
+                    type: object
+                  type: array
+                envFrom:
+                  items:
+                    properties:
+                      configMapRef:
+                        properties:
+                          name:
+                            minLength: 1
+                            type: string
+                          optional:
+                            type: boolean
+                        required:
+                          - name
+                        type: object
+                      prefix:
+                        minLength: 1
+                        type: string
+                      secretRef:
+                        properties:
+                          name:
+                            minLength: 1
+                            type: string
+                          optional:
+                            type: boolean
+                        required:
+                          - name
+                        type: object
+                    type: object
+                  type: array
+                history:
+                  type: number
+                image:
+                  properties:
+                    command:
+                      minLength: 1
+                      type: string
+                    name:
+                      minLength: 1
+                      type: string
+                    pullPolicy:
+                      enum:
+                        - IfNotPresent
+                        - Always
+                        - Never
+                      type: string
+                  required:
+                    - name
+                    - command
+                  type: object
+                schedule:
+                  minLength: 1
+                  type: string
+                volumes:
+                  items:
+                    properties:
+                      mountPath:
+                        minLength: 1
+                        type: string
+                      name:
+                        minLength: 1
+                        type: string
+                    required:
+                      - name
+                      - mountPath
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
+                  type: array
+              required:
+                - image
+                - schedule
+              type: object
+            status:
+              properties:
+                conditions:
+                  items:
+                    properties:
+                      lastTransitionTime:
+                        type: string
+                      status:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                      - type
+                      - status
+                      - lastTransitionTime
+                    type: object
+                  type: array
+                lastState:
+                  type: string
+                lastStateSeen:
+                  type: string
+              type: object
+          required:
+            - spec
+          type: object
+      served: true
+      storage: true

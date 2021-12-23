@@ -1,0 +1,156 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: reactors.kubirds.com
+spec:
+  group: kubirds.com
+  names:
+    kind: Reactor
+    plural: reactors
+    shortNames:
+      - react
+    singular: reactor
+  scope: Namespaced
+  versions:
+    - name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            spec:
+              properties:
+                emptySelectorBehavior:
+                  enum:
+                    - MatchAll
+                    - MatchNone
+                  type: string
+                env:
+                  items:
+                    properties:
+                      name:
+                        minLength: 1
+                        type: string
+                      value:
+                        type: string
+                      valueFrom:
+                        properties:
+                          configMapKeyRef:
+                            properties:
+                              key:
+                                minLength: 1
+                                type: string
+                              name:
+                                minLength: 1
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                              - name
+                              - key
+                            type: object
+                          secretKeyRef:
+                            properties:
+                              key:
+                                minLength: 1
+                                type: string
+                              name:
+                                minLength: 1
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                              - name
+                              - key
+                            type: object
+                        type: object
+                    required:
+                      - name
+                    type: object
+                  type: array
+                envFrom:
+                  items:
+                    properties:
+                      configMapRef:
+                        properties:
+                          name:
+                            minLength: 1
+                            type: string
+                          optional:
+                            type: boolean
+                        required:
+                          - name
+                        type: object
+                      prefix:
+                        minLength: 1
+                        type: string
+                      secretRef:
+                        properties:
+                          name:
+                            minLength: 1
+                            type: string
+                          optional:
+                            type: boolean
+                        required:
+                          - name
+                        type: object
+                    type: object
+                  type: array
+                image:
+                  properties:
+                    command:
+                      minLength: 1
+                      type: string
+                    name:
+                      minLength: 1
+                      type: string
+                    pullPolicy:
+                      enum:
+                        - IfNotPresent
+                        - Always
+                        - Never
+                      type: string
+                  required:
+                    - name
+                    - command
+                  type: object
+                triggers:
+                  properties:
+                    failure:
+                      type: boolean
+                    fixed:
+                      type: boolean
+                    regression:
+                      type: boolean
+                    success:
+                      type: boolean
+                  type: object
+                unitSelector:
+                  additionalProperties:
+                    minLength: 1
+                    type: string
+                  type: object
+                volumes:
+                  items:
+                    properties:
+                      mountPath:
+                        minLength: 1
+                        type: string
+                      name:
+                        minLength: 1
+                        type: string
+                    required:
+                      - name
+                      - mountPath
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
+                  type: array
+              required:
+                - image
+                - unitSelector
+                - emptySelectorBehavior
+              type: object
+          required:
+            - spec
+          type: object
+      served: true
+      storage: true

@@ -1,0 +1,7 @@
+apiVersion: v2
+name: coresup
+description: Kubirds Core Supervision resources
+
+type: application
+version: 2.0.0
+appVersion: "2.0.0-alpha1"
