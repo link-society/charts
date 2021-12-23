@@ -1,44 +1,7 @@
-replicas: 3
-image:
-  name: linksociety/kubirds-operator
-  tag: '2.0.0-alpha1'
-  pullPolicy: IfNotPresent
-  pullSecrets: []
+---
 
-statusImage:
-  name: alpine
-  tag: latest
-  pullPolicy: IfNotPresent
+coresup: {}
+operator: {}
 
-redis:
-  host:
-    kind: static
-    static:
-      value: http://localhost:6739
-    dynamic:
-      valueFrom:
-        secretKeyRef:
-          name: kubirds-redis-access
-          key: REDIS_HOST
-
-  image:
-    name: redis
-    tag: alpine
-    pullPolicy: IfNotPresent
-
-erlangCookie:
-  kind: static
-  static:
-    value: ""
-  dynamic:
-    valueFrom:
-      secretKeyRef:
-        name: kubirds-erlang-cookie
-        key: ERLANG_COOKIE
-
-tls:
-  caBundle: null
-  secretName: null
-
-nameOverride: ""
-fullnameOverride: ""
+dashboard:
+  enabled: no
