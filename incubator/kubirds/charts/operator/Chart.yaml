@@ -1,0 +1,7 @@
+apiVersion: v2
+name: operator
+description: Kubirds Operator
+
+type: application
+version: 2.0.0
+appVersion: "2.0.0-alpha1"

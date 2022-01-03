@@ -1,0 +1,5 @@
+Kubirds Core Supervision includes:
+
+ - Units
+ - Reactors
+ - Inhibitors

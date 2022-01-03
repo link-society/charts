@@ -1,0 +1,11 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "kubirds-operator.fullname" . }}-reader
+  labels:
+    {{- include "kubirds-operator.labels" . | nindent 4 }}
+rules:
+  - apiGroups: ["kubirds.com"]
+    resources: ["units", "reactors", "inhibitors"]
+    verbs: ["get", "watch", "list"]
