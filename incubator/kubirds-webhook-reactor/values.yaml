@@ -1,0 +1,38 @@
+---
+
+# User Configuration
+
+labels: {}
+
+nameOverride: ''
+fullnameOverride: ''
+
+# Internal Configuration (can be overidden)
+
+image:
+  name: ghcr.io/link-society/curl-gotempl:latest
+  pullPolicy: IfNotPresent
+  command: curl-gotempl
+
+method: POST
+headers: 'Content-Type: application/json'
+webhook:
+
+curlConfig: ''
+curlArgs: ''
+cookies: ''
+
+payload:
+
+unitSelector: {}
+
+triggers:
+  success: true
+  failure: true
+  fixed: false
+  regression: false
+
+emptySelectorBehavior: MatchAll # MatchNone otherwise
+
+env: []
+envFrom: []

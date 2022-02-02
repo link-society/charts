@@ -1,0 +1,45 @@
+---
+apiVersion: kubirds.com/v1
+kind: Reactor
+metadata:
+  name: {{ include "kubirds-webhook-reactor.fullname" . }}
+  labels:
+    {{- include "kubirds-webhook-reactor.labels" . | nindent 4 }}
+    {{- if .Values.labels }}
+      {{- .Values.labels | toYaml | nindent 4 }}
+    {{- end }}
+spec:
+  unitSelector:
+    {{- .Values.unitSelector | toYaml | nindent 4 }}
+  triggers:
+    {{- .Values.triggers | toYaml | nindent 4 }}
+  emptySelectorBehavior: {{ .Values.emptySelectorBehavior }}
+  image:
+    name: {{ .Values.image.name }}
+    pullPolicy: {{ .Values.image.pullPolicy }}
+    command: {{ .Values.image.command }}
+  env:
+    - name: REQUEST_URL
+      value: {{ .Values.webhook | quote }}
+    - name: REQUEST_METHOD
+      value: {{ .Values.method | quote }}
+    - name: REQUEST_HEADERS
+      value: '@/config/request-headers'
+    - name: REQUEST_BODY
+      value: '@/config/request-body.json'
+    - name: REQUEST_COOKIES
+      value: '@/config/request-cookies'
+    - name: REQUEST_ARGS
+      value: {{ .Values.curlArgs }}
+    - name: REQUEST_CONFIG
+      value: '@/config/request-config'
+    {{- if .Values.env -}}
+    {{ .Values.env | toYaml | nindent 4 }}
+    {{- end }}
+  envFrom:
+    {{- .Values.envFrom | toYaml | nindent 4 }}
+  volumes:
+    - name: {{ include "kubirds-webhook-reactor.name" . -}}-config
+      mountPath: /config
+      configMap:
+        name: {{ include "kubirds-webhook-reactor.fullname" . }}

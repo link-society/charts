@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "kubirds-webhook-reactor.fullname" . }}
+  labels:
+    {{ include "kubirds-webhook-reactor.labels" . }}
+data:
+  request-body.json: |
+    {{- .Values.payload | toJson | nindent 4 }}
+  request-cookies: |
+    {{- .Values.cookies | quote | nindent 4 }}
+  request-config: |
+    {{- .Values.curlConfig | quote | nindent 4 }}
+  request-headers: |
+    {{- .Values.headers | quote | nindent 4 }}
