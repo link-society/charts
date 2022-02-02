@@ -1,0 +1,18 @@
+---
+
+# User Configuration
+
+labels: {}
+
+# Internal Configuration (can be overidden)
+
+image:
+  name: ghcr.io/link-society/curl-gotempl:latest
+  pullPolicy: IfNotPresent
+  command: curl-gotempl
+
+webhook:
+
+message:
+
+unitSelector: {}
