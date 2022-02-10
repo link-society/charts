@@ -15,3 +15,6 @@ data:
 
   KUBIRDS_CACHELOG_IMAGE_NAME: "{{ .Values.cachelogImage.name }}:{{ .Values.cachelogImage.tag }}"
   KUBIRDS_CACHELOG_IMAGE_PULL_POLICY: "{{ .Values.cachelogImage.pullPolicy }}"
+
+  KUBIRDS_TLS_SECRET_NAME: "{{ include "kubirds-operator.fullname" . }}-tls"
+  KUBIRDS_API_SERVICE_NAME: "{{ include "kubirds-operator.kubirds-operator.apiServiceName" . }}"

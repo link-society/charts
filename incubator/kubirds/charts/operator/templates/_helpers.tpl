@@ -64,3 +64,18 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+API Service
+*/}}
+{{- define "kubirds-operator.apiServiceName" -}}
+v1.api.kubirds.com
+{{- end }}
+
+{{- define "kubirds-operator.apiServiceVersion" -}}
+v1
+{{- end }}
+
+{{- define "kubirds-operator.apiServiceGroup" -}}
+api.kubirds.com
+{{- end }}
