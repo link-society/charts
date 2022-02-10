@@ -1,0 +1,21 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "kubirds-operator.fullname" . }}-tlsctl
+  labels:
+    {{- include "kubirds-operator.labels" . | nindent 4 }}
+spec:
+  schedule: "0 0 1 * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: tlsctl
+              image: "{{ .Values.tlsctlImage.name }}:{{ .Values.tlsctlImage.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.tlsctlImage.pullPolicy }}
+              envFrom:
+                - configMapRef:
+                    name: {{ include "kubirds-operator.fullname" . }}

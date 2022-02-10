@@ -1,8 +1,9 @@
+{{- $days := 60 -}}
 {{- $caName := printf "%s-ca" (include "kubirds-operator.name" .) -}}
 {{- $commonName := include "kubirds-operator.fullname" . -}}
 {{- $dnsNames := list (printf "%s.%s" (include "kubirds-operator.fullname" .) .Release.Namespace) (printf "%s.%s.svc" (include "kubirds-operator.fullname" .) .Release.Namespace) -}}
-{{- $ca := genCA $caName 365 -}}
-{{- $cert := genSignedCert $commonName nil $dnsNames 365 $ca -}}
+{{- $ca := genCA $caName $days -}}
+{{- $cert := genSignedCert $commonName nil $dnsNames $days $ca -}}
 {{- $caBundle := printf "%s\n%s\n" $ca.Cert $ca.Key -}}
 
 ---
@@ -22,13 +23,13 @@ data:
 apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
-  name: v1.api.kubirds.com
+  name: {{- include "kubirds-operator.apiServiceName" . }}
   labels:
     {{- include "kubirds-operator.labels" . | nindent 4 }}
 spec:
-  group: api.kubirds.com
+  group: {{ include "kubirds-operator.apiServiceGroup" . }}
   groupPriorityMinimum: 100
-  version: v1
+  version: {{ include "kubirds-operator.apiServiceVersion" . }}
   versionPriority: 100
   service:
     name: {{ include "kubirds-operator.fullname" . }}
