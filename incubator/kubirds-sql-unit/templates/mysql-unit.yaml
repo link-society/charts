@@ -8,6 +8,7 @@ metadata:
     {{- include "kubirds-sql-unit.labels" . | nindent 4 }}
     {{ .Values.labels | toYaml | nindent 4 }}
 spec:
+  serviceAccountName: {{ include "kubirds-sql-unit.serviceAccountName" . }}
   schedule: {{ .Values.schedule }}
   image:
     name: "{{ .Values.image.mysql.name }}:{{ .Values.image.mysql.tag }}"

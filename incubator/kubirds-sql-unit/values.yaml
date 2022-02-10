@@ -39,3 +39,8 @@ image:
     name: percona
     tag: latest
     pullPolicy: IfNotPresent
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
