@@ -1,11 +1,11 @@
 {{ if eq .Values.dbms "mariadb" }}
 ---
-apiVersion: kubevisor.io/v1
+apiVersion: kubirds.io/v1
 kind: Unit
 metadata:
-  name: {{ include "kubevisor-sql-unit.fullname" . }}
+  name: {{ include "kubirds-sql-unit.fullname" . }}
   labels:
-    {{- include "kubevisor-sql-unit.labels" . | nindent 4 }}
+    {{- include "kubirds-sql-unit.labels" . | nindent 4 }}
     {{ .Values.labels | toYaml | nindent 4 }}
 spec:
   schedule: {{ .Values.schedule }}

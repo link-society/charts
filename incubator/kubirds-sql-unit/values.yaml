@@ -17,7 +17,7 @@ cliArgs: ''
 #  - DATABASE_NAME
 #  - DATABASE_USER
 #  - DATABASE_PASSWORD
-secretName: kubevisor-sql-unit-dbms-credentials
+secretName: kubirds-sql-unit-dbms-credentials
 
 image:
   postgres:
