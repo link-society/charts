@@ -1,0 +1,20 @@
+{{ if eq .Values.dbms "mariadb" }}
+---
+apiVersion: kubirds.io/v1
+kind: Unit
+metadata:
+  name: {{ include "kubirds-sql-unit.fullname" . }}
+  labels:
+    {{- include "kubirds-sql-unit.labels" . | nindent 4 }}
+    {{ .Values.labels | toYaml | nindent 4 }}
+spec:
+  serviceAccountName: {{ include "kubirds-sql-unit.serviceAccountName" . }}
+  schedule: {{ .Values.schedule }}
+  image:
+    name: "{{ .Values.image.mariadb.name }}:{{ .Values.image.mariadb.tag }}"
+    pullPolicy: {{ .Values.image.mariadb.pullPolicy }}
+    command: "echo '{{ .Values.query }}' | mysql --host $DATABASE_HOST --username $DATABASE_USER --password $DATABASE_PASSWORD --dbname $DATABASE_NAME {{ .Values.cliArgs }}"
+  envFrom:
+    - secretRef:
+        name: {{ .Values.secretName }}
+{{ end }}

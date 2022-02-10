@@ -1,0 +1,46 @@
+---
+
+schedule: every 5 minutes
+labels: {}
+
+# One of:
+#  - postgres
+#  - mysql
+#  - mariadb
+#  - percona
+dbms: postgres
+query: 'SELECT 1'
+cliArgs: ''
+
+# The related secret MUST contain the follwing variables:
+#  - DATABASE_HOST
+#  - DATABASE_NAME
+#  - DATABASE_USER
+#  - DATABASE_PASSWORD
+secretName: kubirds-sql-unit-dbms-credentials
+
+image:
+  postgres:
+    name: postgres
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  mysql:
+    name: mysql
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  mariadb:
+    name: mariadb
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  percona:
+    name: percona
+    tag: latest
+    pullPolicy: IfNotPresent
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
