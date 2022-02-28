@@ -1,0 +1,6 @@
+apiVersion: v2
+name: kubirds-telegram-message-reactor
+description: Parametrable Telegram Message Reactor for Kubirds
+type: application
+version: 0.1.0
+appVersion: "1.16.0"

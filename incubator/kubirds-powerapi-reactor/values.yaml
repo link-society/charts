@@ -1,0 +1,25 @@
+---
+
+# User Configuration
+
+labels: {}
+unitSelector: {}
+
+triggers:
+  success: yes
+  failure: yes
+  fixed: no
+  regression: no
+
+# Internal Configuration (can be overidden)
+
+image:
+  pullPolicy: IfNotPresent
+  args: >
+    ${INPUT:---input csv /var/log/sensors}
+    ${OUPUT:---output csv -n power -m PowerReport -d /var/log/output --output csv -n formula -m FormulaReport -d /var/log/output}
+    ${ARGS:-}
+
+kind: rapl # either rapl or smartwatts
+verbose: no # for debug mod
+stream: no # input stream mode

@@ -1,0 +1,28 @@
+---
+apiVersion: kubirds.com/v1
+kind: Reactor
+metadata:
+  name: {{ include "kubirds-powerapi-reactor.fullname" . }}
+  labels:
+    {{- include "kubirds-powerapi-reactor.labels" . | nindent 4 }}
+    {{ if .Values.labels }}
+    {{ .Values.labels | toYaml | nindent 4 }}
+    {{ end}}
+spec:
+  unitSelector:
+    {{ if .Values.unitSelector }}
+    {{ .Values.unitSelector | toYaml | nindent 4 }}
+    {{ end}}
+  image:
+    name: powerapi/{{ .Values.kind }}-formula
+    pullPolicy: {{ .Values.image.pullPolicy }}
+    command: >
+      python3 -m {{ .Values.kind }}-formula
+      {{ if .Values.stream }} -s {{ end }}
+      {{ if .Values.verbose }} -v {{ end }}
+      {{ .Values.image.args }}
+  triggers:
+    success: {{ .Values.triggers.success }}
+    failure: {{ .Values.triggers.failure }}
+    fixed: {{ .Values.triggers.fixed }}
+    regression: {{ .Values.triggers.regression }}
