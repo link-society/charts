@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   istio-base:
   - apiVersion: v1
-    created: "2022-02-13T20:20:25.247852004Z"
+    created: "2022-03-03T14:24:47.112737294Z"
     description: Helm chart for deploying Istio cluster resources and CRDs
-    digest: 57435b5ff29c52d8c595f2a1ab0c7f5f324d7ef03c0ebffd44e6fad55ce60b6c
+    digest: 064d92b23ba59cf6ddd8a44fafe2f0eee195a3c84418152e7c5526b8bee013f1
     icon: https://istio.io/latest/favicons/android-192x192.png
     keywords:
     - istio
@@ -16,9 +16,9 @@ entries:
     version: 1.9.4
   istio-discovery:
   - apiVersion: v1
-    created: "2022-02-13T20:20:25.250116958Z"
+    created: "2022-03-03T14:24:47.114946099Z"
     description: Helm chart for istio control plane
-    digest: c01026d1dc32df355789387d16303fc63b9132fbc48cf0d52261aa6eb649d3df
+    digest: 9f2518357ba928f3bfe3216bea39a677e2bdba852befa3b1d7ddec828961af65
     icon: https://istio.io/latest/favicons/android-192x192.png
     keywords:
     - istio
@@ -32,9 +32,9 @@ entries:
     version: 1.9.4
   istio-egress:
   - apiVersion: v1
-    created: "2022-02-13T20:20:25.251334787Z"
+    created: "2022-03-03T14:24:47.116166501Z"
     description: Helm chart for deploying Istio gateways
-    digest: 80d31c53e2565895fa7cef33a1dcbe59921ef06485b5ac614023f5753a762ebb
+    digest: 0d278d33bd80c8a81c480970115e960f91b1aa66094c210f84baba480a49f88a
     icon: https://istio.io/latest/favicons/android-192x192.png
     keywords:
     - istio
@@ -48,9 +48,9 @@ entries:
     version: 1.9.4
   istio-ingress:
   - apiVersion: v1
-    created: "2022-02-13T20:20:25.252539916Z"
+    created: "2022-03-03T14:24:47.123884819Z"
     description: Helm chart for deploying Istio gateways
-    digest: 07942d86a3c3a89a10c6f8f862ef7ade76f8d6d2b54c224d1c498c2638a20ff9
+    digest: 46b2fe07b18c794c698b626b6451661b4b036cce3e8183f3b57ab22602bc1233
     icon: https://istio.io/latest/favicons/android-192x192.png
     keywords:
     - istio
@@ -65,12 +65,12 @@ entries:
   kubirds:
   - apiVersion: v2
     appVersion: 1.0.0-rc3
-    created: "2022-02-13T20:20:25.253076129Z"
+    created: "2022-03-03T14:24:47.12443702Z"
     description: Kubirds Helm chart
-    digest: 233283640cbc4dfbbd74d48c5f24e0669603eb9a865719946984f6bd9f8fa564
+    digest: 79dcf4337d22ef222e6bd16b017489e7bc21a0b0c6b239e1f54ed2a670603028
     name: kubirds
     type: application
     urls:
     - https://charts.link-society.com/stable/kubirds-1.0.0.tgz
     version: 1.0.0
-generated: "2022-02-13T20:20:25.244984435Z"
+generated: "2022-03-03T14:24:47.104021474Z"
