@@ -23,7 +23,7 @@ data:
 apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
-  name: {{- include "kubirds-operator.apiServiceName" . }}
+  name: {{ include "kubirds-operator.apiServiceName" . }}
   labels:
     {{- include "kubirds-operator.labels" . | nindent 4 }}
 spec:
@@ -40,15 +40,15 @@ spec:
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
-  name: {{- include "kubirds-operator.fullname" . }}
+  name: {{ include "kubirds-operator.fullname" . }}
   labels:
     {{- include "kubirds-operator.labels" . | nindent 4 }}
 webhooks:
-  - name: {{- include "kubirds-operator.admissionWebhookName" . }}
+  - name: {{ include "kubirds-operator.admissionWebhookName" . }}
     rules:
       - apiGroups: ["kubirds.com"]
         apiVersions: ["v1"]
-        operations: ["CREATE", "UPDATE"],
+        operations: ["CREATE", "UPDATE"]
         resources: ["units", "reactors", "inhibitors"]
         scope: "Namespaced"
     clientConfig:
