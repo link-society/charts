@@ -18,4 +18,3 @@ data:
 
   KUBIRDS_TLS_SECRET_NAME: "{{ include "kubirds-operator.fullname" . }}-tls"
   KUBIRDS_API_SERVICE_NAME: "{{ include "kubirds-operator.apiServiceName" . }}"
-  KUBIRDS_ADMISSION_WEBHOOK_NAME: "{{ include "kubirds-operator.admissionWebhookName" . }}"

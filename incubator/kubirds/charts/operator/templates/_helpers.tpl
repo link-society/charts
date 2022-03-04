@@ -79,11 +79,3 @@ v1
 {{- define "kubirds-operator.apiServiceGroup" -}}
 api.kubirds.com
 {{- end }}
-
-{{/*
-Admission webhook
-*/}}
-
-{{- define "kubirds-operator.admissionWebhookName" -}}
-validation.webhook.kubirds.com
-{{- end }}
