@@ -113,6 +113,9 @@ spec:
                     - name
                     - command
                   type: object
+                serviceAccountName:
+                  minLength: 1
+                  type: string
                 triggers:
                   properties:
                     failure:
@@ -148,6 +151,18 @@ spec:
                 - image
                 - unitSelector
                 - emptySelectorBehavior
+              type: object
+            status:
+              properties:
+                failureReasons:
+                  items:
+                    type: string
+                  type: array
+                phase:
+                  enum:
+                    - Accepted
+                    - Rejected
+                  type: string
               type: object
           required:
             - spec

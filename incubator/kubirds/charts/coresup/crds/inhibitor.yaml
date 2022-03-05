@@ -45,6 +45,18 @@ spec:
                 - duration
                 - startDate
               type: object
+            status:
+              properties:
+                failureReasons:
+                  items:
+                    type: string
+                  type: array
+                phase:
+                  enum:
+                    - Accepted
+                    - Rejected
+                  type: string
+              type: object
           required:
             - spec
           type: object

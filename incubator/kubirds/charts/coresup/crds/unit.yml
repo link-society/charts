@@ -113,6 +113,9 @@ spec:
                 schedule:
                   minLength: 1
                   type: string
+                serviceAccountName:
+                  minLength: 1
+                  type: string
                 volumes:
                   items:
                     properties:
@@ -149,9 +152,18 @@ spec:
                       - lastTransitionTime
                     type: object
                   type: array
+                failureReasons:
+                  items:
+                    type: string
+                  type: array
                 lastState:
                   type: string
                 lastStateSeen:
+                  type: string
+                phase:
+                  enum:
+                    - Accepted
+                    - Rejected
                   type: string
               type: object
           required:
