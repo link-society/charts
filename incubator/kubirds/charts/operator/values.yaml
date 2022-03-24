@@ -6,13 +6,13 @@ replicaCount: 1
 
 image:
   name: linksociety/kubirds-operator
-  tag: 2.0.0-alpha5
+  tag: 2.0.0-alpha6
   pullPolicy: IfNotPresent
   pullSecrets: []
 
 tlsctlImage:
   name: linksociety/kubirds-tlsctl
-  tag: 2.0.0-alpha5
+  tag: 2.0.0-alpha6
   pullPolicy: IfNotPresent
 
 cachelogImage:
