@@ -1,0 +1,20 @@
+---
+apiVersion: kubirds.com/v1
+kind: Unit
+metadata:
+  name: {{ include "tlsmon.fullname" . }}-checker
+  labels:
+    link-society.com/name: tlsmon
+    {{- include "tlsmon.labels" . | nindent 4 }}
+spec:
+  schedule: every day
+  image:
+    name: {{ .Values.images.checker.repository }}:{{ .Values.images.checker.tag | default .Chart.AppVersion }}"
+    pullPolicy: {{ .Values.images.checker.pullPolicy }}
+    command: tlsmon-check
+  env:
+    - name: TLSMON_CHECK_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: {{ include "tlsmon.fullname" . }}
+          key: TLSMON_CHECK_TOKEN

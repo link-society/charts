@@ -1,0 +1,47 @@
+---
+apiVersion: kubirds.io/v1
+kind: Reactor
+metadata:
+  name: {{ include "tlsmon.fullname" . }}-notifier
+  labels:
+    {{- include "tlsmon.labels" . | nindent 4 }}
+spec:
+  unitSelector:
+    link-society.com/name: tlsmon
+  triggers:
+    success: yes
+    failure: no
+    fixed: yes
+    regression: no
+  image:
+    name: {{ .Values.images.notifier.repository }}:{{ .Values.images.notifier.tag | default .Chart.AppVersion }}"
+    pullPolicy: {{ .Values.images.notifier.pullPolicy }}
+    command: sh /scripts/tlsmon-parse-unit.sh
+  env:
+    - name: SENDER_ADDRESS
+      value: noreply@tlsmon.com
+    - name: RECIPIENT_LIST_TEMPLATE
+      value: /templates/recipients.txt
+    - name: SUBJECT_TEMPLATE
+      value: /templates/subject.txt
+    - name: HTML_PART_TEMPLATE
+      value: /templates/body.html
+    - name: MAILJET_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: {{ include "tlsmon.fullname" . }}
+          key: MAILJET_API_KEY
+    - name: MAILJET_SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          name: {{ include "tlsmon.fullname" . }}
+          key: MAILJET_SECRET_KEY
+  volumes:
+    - name: tlsmon-scripts
+      mountPath: /scripts
+      configMap:
+        name: {{ include "tlsmon.fullname" . }}-notifier-scripts
+    - name: tlsmon-templates
+      mountPath: /templates
+      configMap:
+        name: {{ include "tlsmon.fullname" . }}-notifier-mail-templates
