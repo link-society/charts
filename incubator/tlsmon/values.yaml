@@ -6,7 +6,6 @@ credentials:
     secret: null
     publishableKey: null
     priceId: null
-    first100Id: null
   database:
     url: null
   mailjet:

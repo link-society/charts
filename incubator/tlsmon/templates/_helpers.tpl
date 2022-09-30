@@ -80,10 +80,6 @@ Verify all credentials have been set.
 {{- fail "Missing credentials 'stripe.priceId'" }}
 {{- end }}
 
-{{- if (not .Values.credentials.stripe.first100Id) }}
-{{- fail "Missing credentials 'stripe.first100Id'" }}
-{{- end }}
-
 {{- if (not .Values.credentials.database.url) }}
 {{- fail "Missing credentials 'database.url'" }}
 {{- end }}
