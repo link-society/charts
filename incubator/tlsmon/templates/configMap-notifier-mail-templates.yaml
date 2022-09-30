@@ -6,8 +6,10 @@ metadata:
   labels:
     {{- include "tlsmon.labels" . | nindent 4 }}
 data:
-  recipients.txt: "{{ .Env.WEBSITE_MAIL }}"
-  subject.txt: "[DOWN ALERT] {{ .Env.WEBSITE_URL }}"
+  recipients.txt: |
+    {{ .Env.WEBSITE_MAIL }}
+  subject.txt: |
+    [DOWN ALERT] {{ .Env.WEBSITE_URL }}
   body.html: |
     <p>
       <b>DownAlert</b> detected a problem with the website located at
