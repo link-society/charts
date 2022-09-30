@@ -16,5 +16,6 @@ data:
       export WEBSITE_URL=$(jq -r ".[${idx}].url" $UNIT_OUTPUT)
       export WEBSITE_MAIL=$(jq -r ".[${idx}].mail" $UNIT_OUTPUT)
       export TLSMON_MSG=$(jq -r ".[${idx}].msg" $UNIT_OUTPUT)
+      export USER_LANG=$(jq -r ".[${idx}].lang" $UNIT_OUTPUT)
       exec /usr/local/bin/sendmail
     done
