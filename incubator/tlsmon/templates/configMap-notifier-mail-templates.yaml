@@ -7,19 +7,45 @@ metadata:
     {{- include "tlsmon.labels" . | nindent 4 }}
 data:
   recipients.txt: |
-    {{ .Env.WEBSITE_MAIL }}
+    {{ .Env.USER_MAIL }}
   subject.txt: |
-    [DOWN ALERT] {{ .Env.WEBSITE_URL }}
+    [DOWN ALERT]
   body.html: |
+    {{ if eq .Env.USER_LOCALE "fr" }}
     <p>
-      <b>DownAlert</b> detected a problem with the website located at
-      <pre>{{ .Env.WEBSITE_URL }}</pre>:
+      <b>DownAlert</b> a détecté des problèmes avec les sites web suivants :
     </p>
-    <pre style="margin-left: 3em;">{{ .Env.TLSMON_MSG }}</pre>
+    <table>
+      <thead><tr><th>URL</th><th>Error</th></td></thead>
+      <tbody>
+      {{ range (.Env.WEBSITE_ERRORS | fromJson) }}
+        <tr>
+          <td><a href="{{ .url }}">{{ .url }}</a></td>
+          <td>{{ .msg }}</td>
+        </tr>
+      {{ end }}
+      </tbody>
+    </table>
+    <p>
+      Vous recevez cet email car vous utilisez le service <a href="https://downalert.com">DownAlert</a>.
+    </p>
+    {{ else }}
+    <p>
+      <b>DownAlert</b> detected problems with the websites located at
+    </p>
+    <table>
+      <thead><tr><th>URL</th><th>Error</th></td></thead>
+      <tbody>
+      {{ range (.Env.WEBSITE_ERRORS | fromJson) }}
+        <tr>
+          <td><a href="{{ .url }}">{{ .url }}</a></td>
+          <td>{{ .msg }}</td>
+        </tr>
+      {{ end }}
+      </tbody>
+    </table>
     <p>
       You are receiving this email because you subscribed to the
       <a href="https://downalert.com">DownAlert</a> service.
-      <br/>
-      If you no longer want to receive emails from us, please click
-      <a href="https://downalert.com/unsubscribe">here</a> to unsubscribe.
     </p>
+    {{ end }}

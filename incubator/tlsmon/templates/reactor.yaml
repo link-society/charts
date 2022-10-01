@@ -19,7 +19,7 @@ spec:
     command: sh /scripts/tlsmon-parse-unit.sh
   env:
     - name: SENDER_ADDRESS
-      value: noreply@tlsmon.com
+      value: no-reply@downalert.com
     - name: RECIPIENT_LIST_TEMPLATE
       value: /templates/recipients.txt
     - name: SUBJECT_TEMPLATE

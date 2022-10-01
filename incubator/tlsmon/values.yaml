@@ -16,20 +16,20 @@ replicaCount: 1
 
 images:
   server:
-    repository: linksociety/tlsmon-server
+    repository: linksociety/tlsmon-webserver
     pullPolicy: IfNotPresent
     tag: "v1.0.0"
     pullSecrets: []
 
   checker:
-    repository: linksociety/tlsmon-checker
+    repository: curlimages/curl
     pullPolicy: IfNotPresent
-    tag: "v1.0.0"
+    tag: "v7.85.0"
 
   notifier:
-    repository: linksociety/tlsmon-notifier
+    repository: linksociety/kubirds-reactor-mailjet
     pullPolicy: IfNotPresent
-    tag: "v1.0.0"
+    tag: "v0.1.1"
 
 nameOverride: ""
 fullnameOverride: ""

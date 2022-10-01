@@ -11,7 +11,11 @@ spec:
   image:
     name: {{ .Values.images.checker.repository }}:{{ .Values.images.checker.tag | default .Chart.AppVersion }}"
     pullPolicy: {{ .Values.images.checker.pullPolicy }}
-    command: tlsmon-check
+    command: |
+      curl -X POST \
+      -H "Content-Type: application/json" \
+      -d "{ \"token\": \"$TLSMON_CHECK_TOKEN\" }" \
+      https://downalert.com/check
   env:
     - name: TLSMON_CHECK_TOKEN
       valueFrom:

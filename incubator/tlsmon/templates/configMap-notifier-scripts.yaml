@@ -13,9 +13,8 @@ data:
     #     {"url": "...", "mail": "...", "msg": "..."}
     jq '.|keys[]' $UNIT_OUTPUT | while read idx
     do
-      export WEBSITE_URL=$(jq -r ".[${idx}].url" $UNIT_OUTPUT)
-      export WEBSITE_MAIL=$(jq -r ".[${idx}].mail" $UNIT_OUTPUT)
-      export TLSMON_MSG=$(jq -r ".[${idx}].msg" $UNIT_OUTPUT)
-      export USER_LANG=$(jq -r ".[${idx}].lang" $UNIT_OUTPUT)
+      export USER_MAIL=$(jq -r ".[${idx}].mail" $UNIT_OUTPUT)
+      export USER_LOCALE=$(jq -r ".[${idx}].locale" $UNIT_OUTPUT)
+      export WEBSITE_ERRORS=$(jq -r ".[${idx}].errors $UNIT_OUTPUT")
       exec /usr/local/bin/sendmail
     done
