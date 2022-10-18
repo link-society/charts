@@ -3,9 +3,9 @@ entries:
   kapp-controller:
   - apiVersion: v2
     appVersion: 0.27.0
-    created: "2022-04-02T12:10:30.391778323Z"
+    created: "2022-10-18T12:31:35.360094262Z"
     description: Lightweight continuous delivery to Kubernetes
-    digest: 06cc4213798bdf5aa2a9ee4fc6076dae5ff3cb8e4d3a6235c2e8c93464a1b1a9
+    digest: 6b58c3ff7b6f23f7be1308902a6ef5880ec6bef1f899558c4610921fc0e0c90e
     name: kapp-controller
     type: application
     urls:
@@ -14,7 +14,7 @@ entries:
   kubirds:
   - apiVersion: v2
     appVersion: 2.0.0-alpha5
-    created: "2022-04-02T12:10:30.393721536Z"
+    created: "2022-10-18T12:31:35.362286294Z"
     dependencies:
     - name: coresup
       repository: ""
@@ -24,7 +24,7 @@ entries:
       name: dashboard
       repository: ""
     description: Kubirds Helm chart
-    digest: 20f3e9829859fd2d8834a1cc8fc7dad4a51e54d28687c98a639929596236b661
+    digest: 2aded8f51a2e1ef2fa5a7630940e50cde3abdf08549cebb25b9db09095839e16
     name: kubirds
     type: application
     urls:
@@ -32,7 +32,7 @@ entries:
     version: 2.0.0
   - apiVersion: v2
     appVersion: 1.0.0-rc3
-    created: "2022-04-02T12:10:30.392445827Z"
+    created: "2022-10-18T12:31:35.360942313Z"
     description: Kubirds Helm chart
     digest: e2f7216f872d6192c5a913cb4ff969d0c0348415afeb8da116272b1a5143f627
     name: kubirds
@@ -43,9 +43,9 @@ entries:
   kubirds-curl-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-04-02T12:10:30.393999038Z"
+    created: "2022-10-18T12:31:35.362507608Z"
     description: Parametrable cURL Unit for Kubirds
-    digest: c6592e7aaace6b498a975377968a9ec1fc434c82f6b9ba7be00bcdfc43881d3e
+    digest: e4374c783095314549c1ac2f61a2e678b9b8fec3ad4d42c0a07903a856670e37
     name: kubirds-curl-unit
     type: application
     urls:
@@ -54,9 +54,9 @@ entries:
   kubirds-klander-reactor:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-04-02T12:10:30.394242539Z"
+    created: "2022-10-18T12:31:35.362728821Z"
     description: Parametrable klander Reactor for Kubirds
-    digest: bc356d3fe3c1c5535263d31608322c67b8552df1152bcb213bdb0556e5c0bceb
+    digest: 6640bee259e6a12bc4ecdec1e6ca7ff8c571e2eb16af60f1621cbb9bf9236e05
     name: kubirds-klander-reactor
     type: application
     urls:
@@ -65,9 +65,9 @@ entries:
   kubirds-klifter-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-04-02T12:10:30.394472941Z"
+    created: "2022-10-18T12:31:35.362956435Z"
     description: Parametrable klifter Unit for Kubirds
-    digest: 7b520a2c07eb5edae8b2eb016c7edddcda5f14e93d590a4715cbfbe06f87c164
+    digest: 5480c21b8bb1eac66fabc42d0100fc2aabd014f82cfe00c0996dd91611a0c9fa
     name: kubirds-klifter-unit
     type: application
     urls:
@@ -76,9 +76,9 @@ entries:
   kubirds-sql-unit:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2022-04-02T12:10:30.394916744Z"
+    created: "2022-10-18T12:31:35.363344358Z"
     description: Parametrable SQL requester Unit for Kubevisor
-    digest: 77f2099208b9f00675ea3ec24c4fde18164fb3e68f402e11910e97add04c953d
+    digest: 6ee81fb3c86fd6053f0b36dc26233982b3e6fd1a218fcb83fbbc66e76a99a572
     name: kubirds-sql-unit
     type: application
     urls:
@@ -87,12 +87,23 @@ entries:
   rabbitmq-cluster-operator:
   - apiVersion: v2
     appVersion: 1.4.0
-    created: "2022-04-02T12:10:30.39584075Z"
+    created: "2022-10-18T12:31:35.364258314Z"
     description: RabbitMQ Cluster Operator
-    digest: fcea9b8f8ca1d121420eb2a073b1666c793471fe4400db6daf762760cb64b97e
+    digest: 0d50edb49dc7b08bae9867f03ea411aa640f4b70f28724f1571b1758136d1105
     name: rabbitmq-cluster-operator
     type: application
     urls:
     - https://charts.link-society.com/incubator/rabbitmq-cluster-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2022-04-02T12:10:30.390196312Z"
+  tlsmon:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-10-18T12:31:35.36485265Z"
+    description: Helm Chart for DownAlert service
+    digest: bd6f6693c06988b16d685b027d8a99ff6bf34e9dec7134f23445a3a0a69e1a1e
+    name: tlsmon
+    type: application
+    urls:
+    - https://charts.link-society.com/incubator/tlsmon-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-10-18T12:31:35.358999596Z"
