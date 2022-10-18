@@ -7,11 +7,11 @@ metadata:
     {{- include "tlsmon.labels" . | nindent 4 }}
 data:
   recipients.txt: |
-    {{ .Env.USER_MAIL }}
+    {{`{{ .Env.USER_MAIL }}`}}
   subject.txt: |
     [DOWN ALERT]
   body.html: |
-    {{ if eq .Env.USER_LOCALE "fr" }}
+    {{`{{ if eq .Env.USER_LOCALE "fr" }}
     <p>
       <b>DownAlert</b> a détecté des problèmes avec les sites web suivants :
     </p>
@@ -48,4 +48,4 @@ data:
       You are receiving this email because you subscribed to the
       <a href="https://downalert.com">DownAlert</a> service.
     </p>
-    {{ end }}
+    {{ end }}`}}
