@@ -1,5 +1,5 @@
 ---
-apiVersion: kubirds.io/v1
+apiVersion: kubirds.com/v1
 kind: Reactor
 metadata:
   name: {{ include "tlsmon.fullname" . }}-notifier
