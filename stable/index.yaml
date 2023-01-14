@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   istio-base:
   - apiVersion: v1
-    created: "2023-01-14T14:53:52.886023682Z"
+    created: "2023-01-14T19:40:22.917564195Z"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: f713a06384836e08d9afa0128e993b3b6d50e87f1e28f60ff7380235861d55d5
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -16,7 +16,7 @@ entries:
     version: 1.9.4
   istio-discovery:
   - apiVersion: v1
-    created: "2023-01-14T14:53:52.888539808Z"
+    created: "2023-01-14T19:40:22.919678551Z"
     description: Helm chart for istio control plane
     digest: 8087a3d5eaa3fe6509302ffdc4ff71b64d86d7b2f49a947e5d909395cc737316
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -32,7 +32,7 @@ entries:
     version: 1.9.4
   istio-egress:
   - apiVersion: v1
-    created: "2023-01-14T14:53:52.889867322Z"
+    created: "2023-01-14T19:40:22.920734879Z"
     description: Helm chart for deploying Istio gateways
     digest: 046903bec9781e021c36ecc4b524d82694fa06d9de47d21ac23487605e7f4593
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -48,7 +48,7 @@ entries:
     version: 1.9.4
   istio-ingress:
   - apiVersion: v1
-    created: "2023-01-14T14:53:52.890823932Z"
+    created: "2023-01-14T19:40:22.921784706Z"
     description: Helm chart for deploying Istio gateways
     digest: 8243b834208cba349843b7bbe8c7d84a568a185decf262b1b84683fc8e01e32d
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -65,7 +65,7 @@ entries:
   kubirds:
   - apiVersion: v2
     appVersion: 1.0.0-rc3
-    created: "2023-01-14T14:53:52.891313137Z"
+    created: "2023-01-14T19:40:22.92232462Z"
     description: Kubirds Helm chart
     digest: fdd68c0262ae340d8c5f8e74142ec095cdcc00a56bac85a23015c66fc00f1661
     name: kubirds
@@ -73,4 +73,4 @@ entries:
     urls:
     - https://charts.link-society.com/stable/kubirds-1.0.0.tgz
     version: 1.0.0
-generated: "2023-01-14T14:53:52.883863459Z"
+generated: "2023-01-14T19:40:22.914406913Z"

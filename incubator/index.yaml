@@ -3,7 +3,7 @@ entries:
   kapp-controller:
   - apiVersion: v2
     appVersion: 0.27.0
-    created: "2023-01-14T14:53:52.563982384Z"
+    created: "2023-01-14T19:40:22.61462139Z"
     description: Lightweight continuous delivery to Kubernetes
     digest: 0f47903bc71504335acb3165581b96a2a5270cfcd00a7c5f5d88b949d6e7f319
     name: kapp-controller
@@ -14,7 +14,7 @@ entries:
   kubirds:
   - apiVersion: v2
     appVersion: 2.0.0-alpha5
-    created: "2023-01-14T14:53:52.565798103Z"
+    created: "2023-01-14T19:40:22.618293283Z"
     dependencies:
     - name: coresup
       repository: ""
@@ -24,7 +24,7 @@ entries:
       name: dashboard
       repository: ""
     description: Kubirds Helm chart
-    digest: 8c92d7a706e27fe4bf69b1b008f98f21784b8551c1a38f59f3f4e3e562c2a09c
+    digest: 60214dadd9716b1f11077fbcb3eded072b600d939310c12b399f51c7d9cf1e77
     name: kubirds
     type: application
     urls:
@@ -32,7 +32,7 @@ entries:
     version: 2.0.0
   - apiVersion: v2
     appVersion: 1.0.0-rc3
-    created: "2023-01-14T14:53:52.564507989Z"
+    created: "2023-01-14T19:40:22.615139903Z"
     description: Kubirds Helm chart
     digest: e2f7216f872d6192c5a913cb4ff969d0c0348415afeb8da116272b1a5143f627
     name: kubirds
@@ -43,7 +43,7 @@ entries:
   kubirds-curl-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-14T14:53:52.566874614Z"
+    created: "2023-01-14T19:40:22.618530489Z"
     description: Parametrable cURL Unit for Kubirds
     digest: a0bb0798ce6e422cdb2562f08e98925b671aa09b504bcc21aed4e2f5d8ffd4f2
     name: kubirds-curl-unit
@@ -54,7 +54,7 @@ entries:
   kubirds-klander-reactor:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-14T14:53:52.567178417Z"
+    created: "2023-01-14T19:40:22.618747994Z"
     description: Parametrable klander Reactor for Kubirds
     digest: b506465d95545519cfc79d157687caa91b4ba1c1cc9b2690ff110ee3ff646366
     name: kubirds-klander-reactor
@@ -65,7 +65,7 @@ entries:
   kubirds-klifter-unit:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-14T14:53:52.56744922Z"
+    created: "2023-01-14T19:40:22.6189516Z"
     description: Parametrable klifter Unit for Kubirds
     digest: 3cf65833a62cf620c6a670e7ac300a0e682273b11fe94bd3eeb8100b9af12517
     name: kubirds-klifter-unit
@@ -76,7 +76,7 @@ entries:
   kubirds-sql-unit:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2023-01-14T14:53:52.567953225Z"
+    created: "2023-01-14T19:40:22.619272708Z"
     description: Parametrable SQL requester Unit for Kubevisor
     digest: dde86f14b3ca98b570217088178aecf34113c8349116fa63034db1aeb06f9103
     name: kubirds-sql-unit
@@ -87,7 +87,7 @@ entries:
   rabbitmq-cluster-operator:
   - apiVersion: v2
     appVersion: 1.4.0
-    created: "2023-01-14T14:53:52.569167638Z"
+    created: "2023-01-14T19:40:22.620426037Z"
     description: RabbitMQ Cluster Operator
     digest: c47dc5f47b2d0ed2ccc6bf3fa7f2f445f7d50f4590e65bfcae4cfee26211f846
     name: rabbitmq-cluster-operator
@@ -98,7 +98,7 @@ entries:
   tlsmon:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-01-14T14:53:52.569776645Z"
+    created: "2023-01-14T19:40:22.620992351Z"
     description: Helm Chart for DownAlert service
     digest: f0cfd42ff7adacc58442efc8b708cacdbb17d97ba68f8fb2ec480a4b1a6cb37c
     name: tlsmon
@@ -106,4 +106,4 @@ entries:
     urls:
     - https://charts.link-society.com/incubator/tlsmon-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-14T14:53:52.563095974Z"
+generated: "2023-01-14T19:40:22.613666165Z"
