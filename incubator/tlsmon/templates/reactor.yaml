@@ -6,6 +6,7 @@ metadata:
   labels:
     {{- include "tlsmon.labels" . | nindent 4 }}
 spec:
+  emptySelectorBehavior: MatchNone
   unitSelector:
     link-society.com/name: tlsmon
   triggers:
